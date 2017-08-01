@@ -1,4 +1,4 @@
-import SFL_diagnoser.Diagnoser.ExperimentInstance
+import sfl_diagnoser.Diagnoser.ExperimentInstance
 
 __author__ = 'amir'
 
@@ -121,8 +121,8 @@ def readPlanningFile(fileName):
         err=int(err)
         testsPool.append(actualTrace)
         error.append(err)
-    SFL_diagnoser.Diagnoser.ExperimentInstance.set_values(priors, bugs, testsPool)
-    return SFL_diagnoser.Diagnoser.ExperimentInstance.ExperimentInstance(initials, error)
+    sfl_diagnoser.Diagnoser.ExperimentInstance.set_values(priors, bugs, testsPool)
+    return sfl_diagnoser.Diagnoser.ExperimentInstance.ExperimentInstance(initials, error)
 
 
 def diagnoseTests():

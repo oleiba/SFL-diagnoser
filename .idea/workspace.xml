@@ -2,22 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a039d050-e4ea-4406-bd84-717c60178c1c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/diagnoserUtils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sfl_diagnoser/Planner/pomcp/main.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/.idea/modules.xml" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/.idea/modules.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Barinel.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Barinel.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/planning_example/choose_worse2.csv" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/planning_example/choose_worse2.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/lrtdp_checker/__init__.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Planner/lrtdp_checker/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp/DIAGNOSER_STATE.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Planner/pomcp/DIAGNOSER_STATE.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp/MCTS.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Planner/pomcp/MCTS.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp_old/__init__.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Planner/pomcp_old/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp_old/pomcp/CHUNK.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Planner/pomcp_old/pomcp/CHUNK.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp_old/pomcp/MCTSPARAMS.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Planner/pomcp_old/pomcp/MCTSPARAMS.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp_old/pomcp/NETWORK_STATE.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Planner/pomcp_old/pomcp/NETWORK_STATE.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp_old/pomcp/STATUS.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Planner/pomcp_old/pomcp/STATUS.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp_old/pomcp/TEST_SIMULATOR.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Planner/pomcp_old/pomcp/TEST_SIMULATOR.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/domain_knowledge.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/domain_knowledge.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/mcts/main.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/mcts/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp/main.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp_old/pomcp/main.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp_old/pomcp/main.py" />
     </list>
     <ignored path="SFL-diagnoser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,8 +39,8 @@
       <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            <state relative-caret-position="85">
+              <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -395,8 +384,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        <state relative-caret-position="85">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
           <folding />
         </state>
       </provider>
