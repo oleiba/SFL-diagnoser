@@ -2,8 +2,10 @@
 # each function recieves experiments instance and
 # return sorted list of optional tests ordered by the chosen metric
 
-import Diagnoser.ExperimentInstance
 import numpy
+
+import SFL_diagnoser.Diagnoser.ExperimentInstance
+
 
 def pass_probability(ei):
     ei.diagnose()
@@ -32,11 +34,11 @@ def fail_count(ei):
     for test in ei.initial_tests:
         if ei.error[test] == 0:
             continue
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         for c in trace:
             failed_components.add(c)
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         probabilities.append(sum([c for c in trace if c in failed_components]))
     return [x / sum(probabilities) for x in probabilities]
 
@@ -48,11 +50,11 @@ def fail_sum(ei):
     for test in ei.initial_tests:
         if ei.error[test] == 0:
             continue
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         for c in trace:
             failed_components[c] = failed_components.get(c, 0) + 1
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         probabilities.append(sum([failed_components.get(c, 0) for c in trace]))
     return [x / sum(probabilities) for x in probabilities]
 
@@ -60,7 +62,7 @@ def num_components(ei):
     optionals = ei.get_optionals_actions()
     probabilities = []
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         probabilities.append(len(trace))
     return [x / sum(probabilities) for x in probabilities]
 
@@ -70,10 +72,10 @@ def new_comps(ei):
     optionals = ei.get_optionals_actions()
     components = set()
     for test in ei.initial_tests:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         components += set(trace)
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         probabilities.append(len([c for c in trace if c not in components]))
     return [x / sum(probabilities) for x in probabilities]
 
@@ -83,11 +85,11 @@ def common_comps(ei):
     optionals = ei.get_optionals_actions()
     components_activity = {}
     for test in ei.initial_tests:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         for c in trace:
             components_activity[c] = components_activity.get(c, 0) + 1
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         probabilities.append(sum([components_activity.get(c, 0) for c in trace]))
     return [x / sum(probabilities) for x in probabilities]
 
@@ -104,7 +106,7 @@ def components_diagnoses(ei, aggregation):
         for c in d.get_diag():
             components[c] = components.get(c, 0) + 1
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         probabilities.append(aggregation([components.get(c,0) for c in trace]))
     return [x / sum(probabilities) for x in probabilities]
 
@@ -113,7 +115,7 @@ def components_probabilities(ei, aggregation):
     optionals = ei.get_optionals_actions()
     probabilities = []
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         probabilities.append(reduce(aggregation, [components_probs.get(c,0) for c in trace]))
     return [x / sum(probabilities) for x in probabilities]
 
@@ -123,7 +125,7 @@ def split_components_probabilities(ei):
     optionals = ei.get_optionals_actions()
     probabilities = []
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         probabilities.append(1- abs(half_components_probabilities-reduce(lambda x,y:x+y, [components_probs.get(c,0) for c in trace])))
     return zip(optionals, [x / sum(probabilities) for x in probabilities])
 
@@ -133,11 +135,11 @@ def components_activity(ei, aggregation):
     optionals = ei.get_optionals_actions()
     activity = {}
     for test in ei.initial_tests:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         for c in trace:
             activity[c] = activity.get(c, 0) + 1
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         probabilities.append(aggregation([activity.get(c, 0) for c in trace]))
     return [x / sum(probabilities) for x in probabilities]
 
@@ -148,12 +150,12 @@ def components_by_similarity(ei, aggregation, similarity):
     e = [ind for ind,_ in enumerate(ei.error)]
     components = {}
     for test in ei.initial_tests:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         for c in trace:
             components[c] = components.get(c, []) + [test]
     similarities = dict([(c,similarity(components[c], e)) for c in components])
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         probabilities.append(aggregation([similarities.get(c, 0) for c in trace]))
     return [x / sum(probabilities) for x in probabilities]
 
@@ -167,7 +169,7 @@ def friends(ei):
         for c in d.get_diag():
             components_friends[c] = components_friends.get(c, set()).union(set([x for x in d.get_diag() if x != c]))
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         p = 0.0
         for c in components_probs:
             if c in trace:
@@ -191,7 +193,7 @@ def seperator_hp(ei):
     optionals = ei.get_optionals_actions()
     components_probs = dict(ei.compsProbs())
     for test in optionals:
-        trace = Diagnoser.ExperimentInstance.pool[test]
+        trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
         trace_probs = map(lambda x: components_probs.get(x,1), filter(lambda x: x in components_probs, trace))
         if trace_probs == []:
             probabilities.append(0.0)

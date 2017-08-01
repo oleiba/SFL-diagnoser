@@ -1,23 +1,21 @@
 __author__ = 'amir'
 
-import Planner.pomcp.main
-import Planner.mcts.main
-import Planner.lrtdp.main
-import Planner.lrtdp.LRTDPModule
-import Diagnoser.diagnoserUtils
-import HP_Random
-import similarity
-import time
-import timer
-
-
-import glob
-import gc
-import os
 import csv
-import Planning_Results
-from threading import Thread
 import functools
+import gc
+import glob
+import os
+import time
+from threading import Thread
+
+import Planner.lrtdp.LRTDPModule
+import Planner.mcts.main
+import Planner.pomcp.main
+
+import HP_Random
+import Planning_Results
+import SFL_diagnoser.Diagnoser.diagnoserUtils
+
 
 def timeout(timeout):
     def deco(func):
@@ -63,7 +61,7 @@ def runAll_optimized(instancesDir, outDir, planners):
         print f
         learn_alg,pBug,pValid,tests,index=Planning_Results.instance_name_to_meta(os.path.basename(f))
         file=os.path.join(instancesDir,f)
-        ei = Diagnoser.diagnoserUtils.readPlanningFile(file)
+        ei = SFL_diagnoser.Diagnoser.diagnoserUtils.readPlanningFile(file)
         for name,alg in planners:
             try:
                 precision, recall, steps, total_time, rpr = get_results_from_mdp(ei, alg)
@@ -80,8 +78,8 @@ def mcts_by_approach(approach, iterations):
 
 def lrtdp_by_approach(epsilonArg, iterations, greedy_action_treshold, approachArg):
     def approached_lrtdp(ei):
-        Planner.lrtdp.LRTDPModule.setVars(ei, epsilonArg, iterations, greedy_action_treshold, approachArg)
-        return Planner.lrtdp.LRTDPModule.lrtdp()
+        SFL_diagnoser.Planner.lrtdp.LRTDPModule.setVars(ei, epsilonArg, iterations, greedy_action_treshold, approachArg)
+        return SFL_diagnoser.Planner.lrtdp.LRTDPModule.lrtdp()
     return approached_lrtdp
 
 def entropy_by_threshold(threshold):
@@ -120,7 +118,7 @@ def planning_for_project(dir):
         runAll_optimized(in_dir, out_dir, planners)
 
 def test():
-    ei = Diagnoser.diagnoserUtils.readPlanningFile(r"C:\Temp\ant_bug\100_uniform_0.txt")
+    ei = SFL_diagnoser.Diagnoser.diagnoserUtils.readPlanningFile(r"C:\Temp\ant_bug\100_uniform_0.txt")
     print ei.calc_precision_recall()
     planners = [ # ("lrtdp_hp_0.3", lrtdp_by_approach(1, 10, 0.3, "hp")),
                  # ("lrtdp_hp_0.7", lrtdp_by_approach(1, 10, 0.7, "hp")),

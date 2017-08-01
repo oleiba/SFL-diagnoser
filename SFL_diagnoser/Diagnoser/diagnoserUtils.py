@@ -1,10 +1,9 @@
-import Diagnoser.ExperimentInstance
+import SFL_diagnoser.Diagnoser.ExperimentInstance
 
 __author__ = 'amir'
 
 import csv
 import Barinel
-import sys
 import os
 
 
@@ -23,7 +22,7 @@ class FullMatrix:
         return ans
 
     def diagnose(self):
-        bar=Barinel.Barinel()
+        bar= Barinel.Barinel()
         bar.set_matrix_error(self.matrix,self.error)
         bar.set_prior_probs(self.probabilities)
         return bar.run()
@@ -122,8 +121,8 @@ def readPlanningFile(fileName):
         err=int(err)
         testsPool.append(actualTrace)
         error.append(err)
-    Diagnoser.ExperimentInstance.set_values(priors, bugs, testsPool)
-    return Diagnoser.ExperimentInstance.ExperimentInstance(initials, error)
+    SFL_diagnoser.Diagnoser.ExperimentInstance.set_values(priors, bugs, testsPool)
+    return SFL_diagnoser.Diagnoser.ExperimentInstance.ExperimentInstance(initials, error)
 
 
 def diagnoseTests():

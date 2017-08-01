@@ -1,10 +1,12 @@
 import copy
 import math
 import random
-import numpy
-import Diagnoser.diagnoserUtils
-import Planner.domain_knowledge
 from math import ceil
+
+import Planner.domain_knowledge
+import numpy
+
+import SFL_diagnoser.Diagnoser.diagnoserUtils
 
 __author__ = 'amir'
 
@@ -47,7 +49,7 @@ class ExperimentInstance:
         self.diagnoses=[]
 
     def initials_to_DS(self):
-        ds=Diagnoser.diagnoserUtils.dynamicSpectrum()
+        ds= SFL_diagnoser.Diagnoser.diagnoserUtils.dynamicSpectrum()
         ds.TestsComponents = copy.deepcopy([x for ind,x in enumerate(pool) if ind in self.initial_tests ])
         ds.probabilities=list(priors)
         ds.error=[x for ind,x in enumerate(self.error) if ind in self.initial_tests ]

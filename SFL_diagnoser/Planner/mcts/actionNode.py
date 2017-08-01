@@ -1,7 +1,8 @@
 __author__ = 'amir'
 import random
-import Planner.mcts.mcts
-import Planner.mcts.InstanceNode
+
+import SFL_diagnoser.Planner.mcts.mcts
+
 
 class ActionNode(object):
     def __init__(self, action, parent, approach):
@@ -18,9 +19,9 @@ class ActionNode(object):
 
     def getStatesIfExists(self):
         if not self.p_child:
-            self.p_child = Planner.mcts.mcts.getStateIfExists(self.parent, self.action, self.p_ei)
+            self.p_child = SFL_diagnoser.Planner.mcts.mcts.getStateIfExists(self.parent, self.action, self.p_ei)
         if not self.f_child:
-            self.f_child = Planner.mcts.mcts.getStateIfExists(self.parent, self.action, self.f_ei)
+            self.f_child = SFL_diagnoser.Planner.mcts.mcts.getStateIfExists(self.parent, self.action, self.f_ei)
 
     def weight(self):
         self.getStatesIfExists()
@@ -61,11 +62,11 @@ class ActionNode(object):
     def expand(self):
         if random.random() <= self.pass_probability:
             if not self.p_child:
-                self.p_child = Planner.mcts.mcts.generateState(self.parent, self.action, self.p_ei, self.approach)
+                self.p_child = SFL_diagnoser.Planner.mcts.mcts.generateState(self.parent, self.action, self.p_ei, self.approach)
             return self.p_child
         else:
             if not self.f_child:
-                self.f_child = Planner.mcts.mcts.generateState(self.parent, self.action, self.f_ei, self.approach)
+                self.f_child = SFL_diagnoser.Planner.mcts.mcts.generateState(self.parent, self.action, self.f_ei, self.approach)
             return self.f_child
 
     def fully_expanded(self):

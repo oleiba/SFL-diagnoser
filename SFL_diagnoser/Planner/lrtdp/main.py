@@ -1,8 +1,5 @@
 __author__ = 'amir'
 
-import Diagnoser.diagnoserUtils
-import Diagnoser.ExperimentInstance
-import LRTDP
 import LRTDPModule
 
 #### main get experiment instance, return planning report
@@ -17,7 +14,7 @@ TRIALS = 10
 
 def mainModule(ei):
     LRTDPModule.clean()
-    LRTDPModule.setVars(ei,0.1,STACK,TRIALS)
+    LRTDPModule.setVars(ei, 0.1, STACK, TRIALS)
     LRTDPModule.lrtdp()
     print "finish lrtdp"
     return LRTDPModule.evaluatePolicy()
@@ -25,13 +22,13 @@ def mainModule(ei):
 def run_file(f):
     print "STACK" , STACK
     print "TRIALS" , TRIALS
-    instance = Diagnoser.diagnoserUtils.readPlanningFile(f)
+    instance = SFL_diagnoser.Diagnoser.diagnoserUtils.readPlanningFile(f)
     return mainModule(instance)
 
 if __name__=="__main__":
 
     file="C:\\projs\\lrtdp\\instances\\40_uniform_0.txt"
-    instance = Diagnoser.diagnoserUtils.readPlanningFile(file)
+    instance = SFL_diagnoser.Diagnoser.diagnoserUtils.readPlanningFile(file)
     print instance.calc_precision_recall() ,len(instance.initial_tests)
     print run_file(file)
     #

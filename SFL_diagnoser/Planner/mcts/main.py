@@ -1,7 +1,6 @@
 __author__ = 'amir'
 
-import Diagnoser.diagnoserUtils
-import Diagnoser.ExperimentInstance
+import SFL_diagnoser.Diagnoser.ExperimentInstance
 import mcts
 
 DEFAULT_BUDGET = 100
@@ -13,13 +12,13 @@ def main_mcts(ei, approach, iterations=DEFAULT_BUDGET):
     while (not state.isTerminal()) and ( not state.AllTestsReached()):
         steps += 1
         action, weight = mcts.mcts_uct(state, iterations, approach)
-        state = Diagnoser.ExperimentInstance.addTests(state, action)
+        state = SFL_diagnoser.Diagnoser.ExperimentInstance.addTests(state, action)
     precision, recall = state.calc_precision_recall()
     return precision, recall, steps, repr(state)
 
 
 def test_mcts(f):
-    instance = Diagnoser.diagnoserUtils.readPlanningFile(f)
+    instance = SFL_diagnoser.Diagnoser.diagnoserUtils.readPlanningFile(f)
     return main_mcts(instance)
 
 

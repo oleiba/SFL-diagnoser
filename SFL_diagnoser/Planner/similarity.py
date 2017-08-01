@@ -5,12 +5,14 @@
 
 import distance
 import scipy.spatial.distance
-import Diagnoser.ExperimentInstance
+
+import SFL_diagnoser.Diagnoser.ExperimentInstance
+
 
 def get_min_vectors(test, diagnosis, is_boolean= False):
     # return two vectors the represents the test and diag.
     values = [False, True] if is_boolean else [0, 1]
-    trace = Diagnoser.ExperimentInstance.pool[test]
+    trace = SFL_diagnoser.Diagnoser.ExperimentInstance.pool[test]
     components = set(trace).union(set(diagnosis))
     vector = lambda l: [values[1] if c in l else values[0] for c in components]
     return vector(trace), vector(diagnosis)

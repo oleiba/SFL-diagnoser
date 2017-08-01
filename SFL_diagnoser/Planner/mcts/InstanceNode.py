@@ -1,8 +1,9 @@
 __author__ = 'amir'
 from math import sqrt, log
-import numpy
-import Planner.mcts.mcts
+
 import Planner.mcts.actionNode
+import numpy
+
 
 class InstanceNode(object):
 

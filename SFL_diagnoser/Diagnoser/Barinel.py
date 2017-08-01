@@ -1,13 +1,12 @@
 __author__ = 'amir'
 
-import Staccato
-import Diagnosis
-
-import math
-import TF
-import random
 import csv
+import math
 import sys
+
+import Diagnosis
+import Staccato
+import TF
 
 prior_p = 0.05
 
@@ -44,7 +43,7 @@ class Barinel:
                 dk = math.pow(prior_p,len(diag.get_diag())) #assuming same prior prob. for every component.
             else:
                 dk = self.non_uniform_prior(diag)
-            tf = TF.TF(self.M_matrix,self.e_vector,diag.get_diag())
+            tf = TF.TF(self.M_matrix, self.e_vector, diag.get_diag())
             e_dk = tf.maximize()
             diag.probability=e_dk * dk #temporary probability
             probs_sum += diag.probability
@@ -60,7 +59,7 @@ class Barinel:
         self.diagnoses = []
         diags = Staccato.Staccato().run(self.M_matrix, self.e_vector)
         for  diag in diags:
-            d=Diagnosis.Diagnosis()
+            d= Diagnosis.Diagnosis()
             d.diagnosis=diag
             self.diagnoses.append(d)
         #generate probabilities
