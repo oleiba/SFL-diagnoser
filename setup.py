@@ -3,9 +3,9 @@ from setuptools import setup
 setup(
     name='SFL-diagnoser',
     version='0.0.1',
-    packages=['SFL_diagnoser', 'SFL_diagnoser.Planner', 'SFL_diagnoser.Planner.mcts', 'SFL_diagnoser.Planner.lrtdp',
-              'SFL_diagnoser.Planner.pomcp', 'SFL_diagnoser.Planner.pomcp_old', 'SFL_diagnoser.Planner.pomcp_old.pomcp',
-              'SFL_diagnoser.Planner.lrtdp_checker', 'SFL_diagnoser.Diagnoser'],
+    packages=['sfl_diagnoser', 'sfl_diagnoser.Planner', 'sfl_diagnoser.Planner.mcts', 'sfl_diagnoser.Planner.lrtdp',
+              'sfl_diagnoser.Planner.pomcp', 'sfl_diagnoser.Planner.pomcp_old', 'sfl_diagnoser.Planner.pomcp_old.pomcp',
+              'sfl_diagnoser.Planner.lrtdp_checker', 'sfl_diagnoser.Diagnoser'],
     url='https://github.com/amir9979/SFL-diagnoser',
     license='',
     author='Amir Elmishali',
