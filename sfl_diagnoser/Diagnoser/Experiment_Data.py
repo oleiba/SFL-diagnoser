@@ -24,6 +24,9 @@ class Experiment_Data(object):
         self.POOL = pool_arg
         self.COMPONENTS_NAMES = components_arg
 
+    def get_named_bugs(self):
+        return map(lambda id: Experiment_Data().COMPONENTS_NAMES[id], Experiment_Data().BUGS)
+
 if __name__ == "__main__":
     a = Experiment_Data()
     b = Experiment_Data()
