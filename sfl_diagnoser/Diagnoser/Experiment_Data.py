@@ -1,4 +1,4 @@
-from sfl_diagnoser.Diagnoser.Singelton import Singleton
+from SFL_diagnoser.Diagnoser.Singelton import Singleton
 
 class Experiment_Data(object):
     __metaclass__ = Singleton

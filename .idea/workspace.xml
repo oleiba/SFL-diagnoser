@@ -2,20 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a039d050-e4ea-4406-bd84-717c60178c1c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Diagnosis_Results.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Experiment_Data.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/FullMatrix.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Instance_Results.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Singelton.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/dynamicSpectrum.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/ExperimentInstance.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/ExperimentInstance.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/__init__.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/domain_knowledge.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/domain_knowledge.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/similarity.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/similarity.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/ExperimentInstance.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/ExperimentInstance.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/HP_Random.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/HP_Random.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/domain_knowledge.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/domain_knowledge.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/lrtdp/LRTDP.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/lrtdp/LRTDP.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/lrtdp/LRTDPModule.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/lrtdp/LRTDPModule.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/lrtdp/lrtdpState.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/lrtdp/lrtdpState.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/mcts/actionNode.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/mcts/actionNode.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/mcts/main.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/mcts/main.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/planningExperiments.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/planningExperiments.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp/main.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp/main.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp_old/pomcp/main.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/pomcp_old/pomcp/main.py" />
+      <change beforePath="$PROJECT_DIR$/SFL_diagnoser/Planner/similarity.py" afterPath="$PROJECT_DIR$/SFL_diagnoser/Planner/similarity.py" />
+      <change beforePath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Diagnosis_Results.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Diagnosis_Results.py" />
+      <change beforePath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Experiment_Data.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Experiment_Data.py" />
+      <change beforePath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/FullMatrix.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/FullMatrix.py" />
+      <change beforePath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/dynamicSpectrum.py" afterPath="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/dynamicSpectrum.py" />
+      <change beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
     <ignored path="SFL-diagnoser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +35,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="SFL-diagnoser" />
   </component>
@@ -39,17 +44,17 @@
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+              <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ExperimentInstance.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/ExperimentInstance.py">
+        <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/ExperimentInstance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1547">
-              <caret line="91" column="38" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="72" />
+            <state relative-caret-position="1377">
+              <caret line="91" column="38" lean-forward="false" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="72" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -58,10 +63,10 @@
         </entry>
       </file>
       <file leaf-file-name="domain_knowledge.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Planner/domain_knowledge.py">
+        <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Planner/domain_knowledge.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3264">
-              <caret line="194" column="26" selection-start-line="194" selection-start-column="26" selection-end-line="194" selection-end-column="26" />
+              <caret line="194" column="26" lean-forward="false" selection-start-line="194" selection-start-column="26" selection-end-line="194" selection-end-column="26" />
               <folding>
                 <element signature="e#161#173#0" expanded="true" />
               </folding>
@@ -70,10 +75,10 @@
         </entry>
       </file>
       <file leaf-file-name="diagnoserUtils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/diagnoserUtils.py">
+        <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2482">
-              <caret line="148" column="110" selection-start-line="148" selection-start-column="110" selection-end-line="148" selection-end-column="110" />
+              <caret line="148" column="110" lean-forward="false" selection-start-line="148" selection-start-column="110" selection-end-line="148" selection-end-column="110" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -82,10 +87,10 @@
         </entry>
       </file>
       <file leaf-file-name="Diagnosis_Results.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Diagnosis_Results.py">
+        <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Diagnosis_Results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+            <state relative-caret-position="102">
+              <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
               </folding>
@@ -94,20 +99,20 @@
         </entry>
       </file>
       <file leaf-file-name="Diagnosis.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Diagnosis.py">
+        <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Diagnosis.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="15" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="15" />
+              <caret line="3" column="15" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Barinel.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Barinel.py">
+        <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Barinel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+            <state relative-caret-position="51">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -117,27 +122,27 @@
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+              <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Experiment_Data.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Experiment_Data.py">
+        <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Experiment_Data.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+              <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="dynamicSpectrum.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/dynamicSpectrum.py">
+        <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/dynamicSpectrum.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="16" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="16" />
+            <state relative-caret-position="867">
+              <caret line="53" column="16" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="16" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -154,6 +159,15 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>sfl_diagnoser</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>sfl_diagnoser</replace>
+      <replace>SFL_diagnoser</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -180,20 +194,12 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-7" />
+    <option name="width" value="1378" />
+    <option name="height" value="735" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -210,124 +216,33 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SFL-diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SFL-diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SFL-diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SFL-diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SFL-diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfl_diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SFL-diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SFL-diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfl_diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Planner" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SFL-diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SFL-diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfl_diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Diagnoser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scratches" />
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Singelton.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\GitHub\SFL-diagnoser\SFL_diagnoser" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager" selected="Python.test">
-    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SFL-diagnoser" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="diagnoserUtils" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sfl_diagnoser/Diagnoser" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SFL-diagnoser" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/diagnoserUtils.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Experiment_Data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Experiment_Data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -342,7 +257,44 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Experiment_Data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="diagnoserUtils" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sfl_diagnoser/Diagnoser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SFL-diagnoser" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sfl_diagnoser/Diagnoser/diagnoserUtils.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SFL-diagnoser" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -494,6 +446,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a039d050-e4ea-4406-bd84-717c60178c1c" name="Default" comment="" />
@@ -505,26 +460,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20424597" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2041116" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24921136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24921136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2832981" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2917981" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2832981" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2917981" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -582,78 +537,70 @@
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda2/Lib/collections.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9605">
-          <caret line="566" column="0" selection-start-line="566" selection-start-column="0" selection-end-line="566" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Anaconda2/Lib/collections.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15776">
-          <caret line="963" column="0" selection-start-line="963" selection-start-column="0" selection-end-line="963" selection-end-column="0" />
+          <caret line="963" column="0" lean-forward="false" selection-start-line="963" selection-start-column="0" selection-end-line="963" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/TF.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/TF.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
-          <caret line="43" column="94" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="94" />
-          <folding />
+          <caret line="43" column="94" lean-forward="false" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="94" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/ExperimentInstance.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/ExperimentInstance.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4165">
-          <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
+          <caret line="254" column="0" lean-forward="false" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Diagnosis.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Diagnosis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Staccato.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Staccato.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1649">
-          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Barinel.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Barinel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/__init__.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+          <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/diagnoserUtils.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1615">
-          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
@@ -663,78 +610,70 @@
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
-          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <caret line="45" column="23" lean-forward="false" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda2/Lib/collections.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9605">
-          <caret line="566" column="0" selection-start-line="566" selection-start-column="0" selection-end-line="566" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Anaconda2/Lib/collections.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26248">
-          <caret line="1579" column="0" selection-start-line="1579" selection-start-column="0" selection-end-line="1579" selection-end-column="0" />
+          <caret line="1579" column="0" lean-forward="false" selection-start-line="1579" selection-start-column="0" selection-end-line="1579" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/TF.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/TF.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
-          <caret line="43" column="94" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="94" />
-          <folding />
+          <caret line="43" column="94" lean-forward="false" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="94" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/ExperimentInstance.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/ExperimentInstance.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
-          <caret line="56" column="48" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="48" />
+          <caret line="56" column="48" lean-forward="false" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="48" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Diagnosis.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Diagnosis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Staccato.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Staccato.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1649">
-          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Barinel.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Barinel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/__init__.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+          <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/diagnoserUtils.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
@@ -744,78 +683,70 @@
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda2/Lib/collections.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9605">
-          <caret line="566" column="0" selection-start-line="566" selection-start-column="0" selection-end-line="566" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Anaconda2/Lib/collections.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26248">
-          <caret line="1579" column="0" selection-start-line="1579" selection-start-column="0" selection-end-line="1579" selection-end-column="0" />
+          <caret line="1579" column="0" lean-forward="false" selection-start-line="1579" selection-start-column="0" selection-end-line="1579" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/TF.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/TF.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
-          <caret line="43" column="94" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="94" />
-          <folding />
+          <caret line="43" column="94" lean-forward="false" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="94" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/ExperimentInstance.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/ExperimentInstance.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
-          <caret line="56" column="48" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="48" />
+          <caret line="56" column="48" lean-forward="false" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="48" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Diagnosis.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Diagnosis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Staccato.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Staccato.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1649">
-          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Barinel.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Barinel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/__init__.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+          <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/diagnoserUtils.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2397">
-          <caret line="141" column="17" selection-start-line="141" selection-start-column="14" selection-end-line="141" selection-end-column="17" />
+          <caret line="141" column="17" lean-forward="false" selection-start-line="141" selection-start-column="14" selection-end-line="141" selection-end-column="17" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
@@ -823,116 +754,101 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/__init__.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+          <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Staccato.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Staccato.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1649">
-          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/TF.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/TF.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
-          <caret line="43" column="94" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="94" />
-          <folding />
+          <caret line="43" column="94" lean-forward="false" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="94" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda2/Lib/collections.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9605">
-          <caret line="566" column="0" selection-start-line="566" selection-start-column="0" selection-end-line="566" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Anaconda2/Lib/collections.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15776">
-          <caret line="963" column="0" selection-start-line="963" selection-start-column="0" selection-end-line="963" selection-end-column="0" />
+          <caret line="963" column="0" lean-forward="false" selection-start-line="963" selection-start-column="0" selection-end-line="963" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda2/Lib/ntpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Instance_Results.py">
+    <entry file="file://$USER_HOME$/Anaconda2/Lib/ntpath.py" />
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Instance_Results.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="26" column="0" selection-start-line="1" selection-start-column="31" selection-end-line="26" selection-end-column="0" />
+          <caret line="26" column="0" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="26" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/FullMatrix.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/FullMatrix.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Singelton.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Singelton.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Instances_Management.py" />
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Planner/domain_knowledge.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Planner/domain_knowledge.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3264">
-          <caret line="194" column="26" selection-start-line="194" selection-start-column="26" selection-end-line="194" selection-end-column="26" />
+          <caret line="194" column="26" lean-forward="false" selection-start-line="194" selection-start-column="26" selection-end-line="194" selection-end-column="26" />
           <folding>
             <element signature="e#161#173#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/ExperimentInstance.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/ExperimentInstance.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="91" column="38" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="72" />
+        <state relative-caret-position="1377">
+          <caret line="91" column="38" lean-forward="false" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="72" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Experiment_Data.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Experiment_Data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/diagnoserUtils.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/diagnoserUtils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2482">
-          <caret line="148" column="110" selection-start-line="148" selection-start-column="110" selection-end-line="148" selection-end-column="110" />
+          <caret line="148" column="110" lean-forward="false" selection-start-line="148" selection-start-column="110" selection-end-line="148" selection-end-column="110" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/dynamicSpectrum.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/dynamicSpectrum.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="16" />
+        <state relative-caret-position="867">
+          <caret line="53" column="16" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="16" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
@@ -942,7 +858,7 @@
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -950,33 +866,33 @@
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Diagnosis_Results.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Diagnosis_Results.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
           <folding>
             <element signature="e#0#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Diagnosis.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Diagnosis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="15" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="15" />
+          <caret line="3" column="15" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sfl_diagnoser/Diagnoser/Barinel.py">
+    <entry file="file://$PROJECT_DIR$/SFL_diagnoser/Diagnoser/Barinel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+        <state relative-caret-position="51">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>

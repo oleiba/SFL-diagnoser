@@ -3,12 +3,12 @@ import math
 import random
 from math import ceil
 import Diagnosis
-import sfl_diagnoser.Diagnoser.dynamicSpectrum
-from sfl_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
-import sfl_diagnoser.Planner.domain_knowledge
+import SFL_diagnoser.Diagnoser.dynamicSpectrum
+from SFL_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
+import SFL_diagnoser.Planner.domain_knowledge
 import numpy
-import sfl_diagnoser.Diagnoser.diagnoserUtils
-from sfl_diagnoser.Diagnoser.Singelton import Singleton
+import SFL_diagnoser.Diagnoser.diagnoserUtils
+from SFL_diagnoser.Diagnoser.Singelton import Singleton
 
 class Instances_Management(object):
     __metaclass__ = Singleton
@@ -40,7 +40,7 @@ class ExperimentInstance:
         self.diagnoses=[]
 
     def initials_to_DS(self):
-        ds= sfl_diagnoser.Diagnoser.dynamicSpectrum.dynamicSpectrum()
+        ds= SFL_diagnoser.Diagnoser.dynamicSpectrum.dynamicSpectrum()
         ds.TestsComponents = copy.deepcopy([Experiment_Data().POOL[test] for test in self.initial_tests])
         ds.probabilities=list(Experiment_Data().PRIORS)
         ds.error=[self.error[test] for test in self.initial_tests]
