@@ -49,7 +49,7 @@ class dynamicSpectrum(object):
         return set(reduce(list.__add__, self.TestsComponents))
 
     def get_components_in_failed_tests(self):
-        return set(reduce(list.__add__, self.get_failed_tests()))
+        return set(reduce(list.__add__, self.get_failed_tests(), []))
 
     def optimize(self):
         """

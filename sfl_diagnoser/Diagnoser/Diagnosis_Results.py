@@ -29,6 +29,7 @@ class Diagnosis_Results(object):
         metrics["entropy"] = self.calc_entropy()
         metrics["num_comps"] = len(self.get_components())
         metrics["num_tests"] = len(self.get_tests())
+        metrics["num_distinct_traces"] = len(self.get_distinct_traces())
         metrics["num_failed_tests"] = len(self._get_tests_by_error(1))
         passed_comps = set(self._get_components_by_error(0))
         failed_comps = set(self.get_components_in_failed_tests())
@@ -37,6 +38,7 @@ class Diagnosis_Results(object):
         metrics["only_passed_comps"] = len(passed_comps - failed_comps)
         metrics["num_bugs"] = len(self.get_bugs())
         metrics["wasted"] = self.calc_wasted_components()
+        metrics["top_k"] = self.calc_top_k()
         return metrics
 
     def _get_metrics_list(self):
@@ -96,7 +98,7 @@ class Diagnosis_Results(object):
         return set(reduce(list.__add__, self.pool.values()))
 
     def _get_components_by_error(self, error):
-        return set(reduce(list.__add__,self._get_tests_by_error(error).values()))
+        return set(reduce(list.__add__,self._get_tests_by_error(error).values(), []))
 
     def get_components_in_failed_tests(self):
         return self._get_components_by_error(1)
@@ -114,7 +116,7 @@ class Diagnosis_Results(object):
             p = d.get_prob()
             for comp in d.get_diag():
                 compsProbs[comp] = compsProbs.get(comp,0) + p
-        return sorted(compsProbs.items(),key=lambda x: x[1], reverse=True)
+        return sorted(compsProbs.items(), key=lambda x: x[1], reverse=True)
 
     def calc_wasted_components(self):
         if len(self.get_bugs()) == 0:
@@ -127,9 +129,22 @@ class Diagnosis_Results(object):
             wasted += components.index(b)
         return wasted / len(self.get_bugs())
 
+    def calc_top_k(self):
+        components = map(lambda x: x[0], self.get_components_probabilities())
+        top_k = float('inf')
+        for bug in self.get_bugs():
+            if bug in components:
+                top_k = min(top_k, components.index(bug))
+        return top_k + 1
+
     def calc_entropy(self):
         return entropy(map(lambda diag: diag.probability, self.diagnoses))
 
     def get_uniform_entropy(self):
         uniform_probability = 1.0/len(self.diagnoses)
         return entropy(map(lambda diag: uniform_probability, self.diagnoses))
+
+    def get_distinct_traces(self):
+        tests = map(lambda test: (sorted(test[1]), self.error[test[0]]), filter(lambda test: test[0] in self.initial_tests, self.pool.items()))
+        distinct_tests = set(map(str, tests))
+        return distinct_tests
