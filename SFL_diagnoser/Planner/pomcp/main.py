@@ -1,10 +1,10 @@
 from Planner.pomcp import MCTSPARAMS, EXPERIMENT, DIAGNOSER
 
-from SFL_diagnoser.Planner.pomcp import EXPERIMENTPARAMS
+from sfl_diagnoser.Planner.pomcp import EXPERIMENTPARAMS
 
 __author__ = 'amir'
 
-import SFL_diagnoser.Diagnoser.diagnoserUtils
+import sfl_diagnoser.Diagnoser.diagnoserUtils
 
 def main(ei):
     searchParams= MCTSPARAMS.MCTSPARAMS()#MCTS::PARAMS
@@ -26,5 +26,5 @@ if __name__=="__main__":
     file="C:\projs\ptry\lrtdp\\10_uniform_15.txt"
     file="C:\projs\ptry\lrtdp\\10_uniform_15_all.txt"
     file="C:\projs\ptry\lrtdp\\10_0.6_0.0_15.txt"
-    ei= SFL_diagnoser.Diagnoser.diagnoserUtils.readPlanningFile(file)
+    ei= sfl_diagnoser.Diagnoser.diagnoserUtils.readPlanningFile(file)
     print main(ei)

@@ -3,12 +3,12 @@ import math
 import random
 from math import ceil
 import Diagnosis
-import SFL_diagnoser.Diagnoser.dynamicSpectrum
-from SFL_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
-import SFL_diagnoser.Planner.domain_knowledge
+import sfl_diagnoser.Diagnoser.dynamicSpectrum
+from sfl_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
+import sfl_diagnoser.Planner.domain_knowledge
 import numpy
-import SFL_diagnoser.Diagnoser.diagnoserUtils
-from SFL_diagnoser.Diagnoser.Singelton import Singleton
+import sfl_diagnoser.Diagnoser.diagnoserUtils
+from sfl_diagnoser.Diagnoser.Singelton import Singleton
 
 class Instances_Management(object):
     __metaclass__ = Singleton
@@ -21,14 +21,13 @@ class Instances_Management(object):
         self.instances = {}
 
     def get_instance(self, key):
-        global instances
-        if key not in instances:
-            instances[key] = self.create_instance_from_key(key)
-        return instances[key]
+        if key not in self.instances:
+            self.instances[key] = self.create_instance_from_key(key)
+        return self.instances[key]
 
     def create_instance_from_key(self, key):
         initial, failed = key.split('-')
-        error = [1 if i in eval(failed) else 0 for i in xrange(len(Experiment_Data().POOL))]
+        error = dict([(i,1 if i in eval(failed) else 0) for i in eval(initial)])
         return ExperimentInstance(eval(initial), error)
 
 TERMINAL_PROB = 0.7
@@ -40,7 +39,7 @@ class ExperimentInstance:
         self.diagnoses=[]
 
     def initials_to_DS(self):
-        ds= SFL_diagnoser.Diagnoser.dynamicSpectrum.dynamicSpectrum()
+        ds= sfl_diagnoser.Diagnoser.dynamicSpectrum.dynamicSpectrum()
         ds.TestsComponents = copy.deepcopy([Experiment_Data().POOL[test] for test in self.initial_tests])
         ds.probabilities=list(Experiment_Data().PRIORS)
         ds.error=[self.error[test] for test in self.initial_tests]
@@ -305,7 +304,7 @@ class ExperimentInstance:
 
 
     def __repr__(self):
-        return repr(self.initial_tests)+"-"+repr([ind for ind,x in enumerate(self.error) if x==1])
+        return repr(self.initial_tests)+"-"+repr([name for name,x in self.error.items() if x==1])
 
 
 def create_key(initial_tests, error):
@@ -323,6 +322,6 @@ def addTests(ei, next_tests):
 def simulateTestOutcome(ei, next_test, outcome):
     initial_tests = copy.deepcopy(ei.initial_tests)
     initial_tests.append(next_test)
-    error = list(ei.error)
+    error = dict(ei.error)
     error[next_test] = outcome
     return Instances_Management().get_instance(create_key(initial_tests, error))
