@@ -98,7 +98,7 @@ class ExperimentInstance:
         compsProbs = self.get_components_probabilities()
         comps_probabilities = dict(compsProbs)
         optionals = self.get_optionals_actions()
-        assert  len(optionals) > 0
+        assert len(optionals) > 0
         tests_probabilities = []
         for test in optionals:
             trace = Experiment_Data().POOL[test]
@@ -184,7 +184,7 @@ class ExperimentInstance:
         return optionals_probs
 
     def bd_next(self):
-        optionals, probabilities =  self.next_tests_by_bd()
+        optionals, probabilities = self.next_tests_by_bd()
         return numpy.random.choice(optionals, 1, p = probabilities).tolist()[0]
 
     def hp_next(self):

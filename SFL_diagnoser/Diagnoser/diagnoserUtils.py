@@ -35,7 +35,13 @@ def readPlanningFile(fileName):
     testsPool={}
     error={}
     for td in TestDetailsStr:
-        ind,actualTrace,err=tuple(td.split(";"))
+        tup = tuple(td.split(";"))
+        ind, actualTrace, err = None, None, None
+        if len(tup) == 3:
+            ind, actualTrace, err = tuple(td.split(";"))
+        if len(tup) == 4:
+            ind, actualTrace, estimatedTrace, err = tuple(td.split(";"))
+            estimatedTestsPool[ind] = eval(estimatedTrace)
         actualTrace=eval(actualTrace)
         err=int(err)
         testsPool[ind] = actualTrace
