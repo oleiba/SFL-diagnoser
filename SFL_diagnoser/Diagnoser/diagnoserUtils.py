@@ -100,7 +100,7 @@ def readPlannerTest():
 def write_planning_file(out_path,
                         bugs,
                         tests_details,
-                        description="defaul description",
+                        description="default description",
                         priors=None,
                         initial_tests=None):
     """
@@ -118,8 +118,12 @@ def write_planning_file(out_path,
     components_names = list(set(reduce(list.__add__, map(lambda details: details[1], tests_details), [])))
     map_component_id = dict(map(lambda x: tuple(reversed(x)), list(enumerate(components_names))))
     full_tests_details = []
-    for name, trace, outcome in tests_details:
-        full_tests_details.append((name, sorted(map(lambda comp: map_component_id[comp] , trace), key=lambda x:x), outcome))
+    if len(tests_details[0]) == 3:
+        for name, trace, outcome in tests_details:
+            full_tests_details.append((name, sorted(map(lambda comp: map_component_id[comp] , trace), key=lambda x:x), outcome))
+    else:
+        for name, trace, estimated_trace, outcome in tests_details:
+            full_tests_details.append((name, sorted(map(lambda comp: map_component_id[comp] , trace), key=lambda x:x), estimated_trace, outcome))
     if priors is None:
         priors = dict(((component, 0.1) for component in components_names))
     if initial_tests is None:

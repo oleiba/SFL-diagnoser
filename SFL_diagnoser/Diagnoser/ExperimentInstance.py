@@ -188,7 +188,7 @@ class ExperimentInstance:
         return numpy.random.choice(optionals, 1, p = probabilities).tolist()[0]
 
     def hp_next(self):
-        optionals, probabilities =  self.next_tests_by_hp()
+        optionals, probabilities = self.next_tests_by_hp()
         return numpy.random.choice(optionals, 1, p = probabilities).tolist()[0]
 
     def entropy_next(self, threshold = 1.2, batch=1):
