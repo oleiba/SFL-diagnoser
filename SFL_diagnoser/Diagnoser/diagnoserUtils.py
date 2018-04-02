@@ -33,7 +33,7 @@ def readPlanningFile(fileName):
     initials=eval(InitialsStr[0])
     components = dict(eval(components_names[0]))
     testsPool={}
-    estimatedTestsPool={}
+    estimatedTestsPool = None
     error={}
     for td in TestDetailsStr:
         tup = tuple(td.split(";"))
@@ -47,7 +47,7 @@ def readPlanningFile(fileName):
         err=int(err)
         testsPool[ind] = actualTrace
         error[ind] = err
-    Experiment_Data().set_values(priors, bugs, testsPool, components)
+    Experiment_Data().set_values(priors, bugs, testsPool, components, estimatedTestsPool)
     return sfl_diagnoser.Diagnoser.ExperimentInstance.ExperimentInstance(initials, error)
 
 
