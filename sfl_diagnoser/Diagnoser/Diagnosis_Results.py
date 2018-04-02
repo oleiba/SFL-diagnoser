@@ -1,4 +1,4 @@
-from sfl_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
+from SFL_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
 from scipy.stats import entropy
 
 class Diagnosis_Results(object):
