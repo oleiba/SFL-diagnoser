@@ -52,7 +52,10 @@ def abstraction():
 
 if __name__ == "__main__":
     # check_influence()
-    # exit()
+    function_instance = readPlanningFile(
+        r"C:\Users\User\Downloads\MatrixFileProb.txt")
+
+    exit()
     abstraction()
     write_planning_file(r"c:\temp\yemp_matrix.txt", ["a"], [["T1", ["a", "c"], 1],
                                                             ["T2", ["b"], 0],

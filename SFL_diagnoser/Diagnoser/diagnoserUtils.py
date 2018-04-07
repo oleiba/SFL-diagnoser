@@ -33,13 +33,14 @@ def readPlanningFile(fileName):
     initials=eval(InitialsStr[0])
     components = dict(eval(components_names[0]))
     testsPool={}
-    estimatedTestsPool = None
+    estimatedTestsPool = {}
     error={}
     for td in TestDetailsStr:
         tup = tuple(td.split(";"))
         ind, actualTrace, err = None, None, None
         if len(tup) == 3:
             ind, actualTrace, err = tuple(td.split(";"))
+            estimatedTestsPool = None
         if len(tup) == 4:
             ind, actualTrace, estimatedTrace, err = tuple(td.split(";"))
             estimatedTestsPool[ind] = eval(estimatedTrace)
