@@ -1,6 +1,6 @@
-from sfl_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile, write_planning_file, write_merged_matrix
-# from sfl_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile, write_planning_file, write_merged_matrix
-# from sfl_diagnoser.Diagnoser.Diagnosis_Results import Diagnosis_Results
+from SFL_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile, write_planning_file, write_merged_matrix
+# from SFL_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile, write_planning_file, write_merged_matrix
+# from SFL_diagnoser.Diagnoser.Diagnosis_Results import Diagnosis_Results
 
 
 def merge_same_components(self):
