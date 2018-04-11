@@ -27,7 +27,7 @@ class Instances_Management(object):
 
     def create_instance_from_key(self, key):
         initial, failed = key.split('-')
-        error = dict([(i,1 if i in eval(failed) else 0) for i in eval(initial)])
+        error = dict([(i,1 if i in eval(failed) else 0) for i in Experiment_Data().POOL])
         return ExperimentInstance(eval(initial), error)
 
 TERMINAL_PROB = 0.7
@@ -308,7 +308,7 @@ class ExperimentInstance:
 
 
 def create_key(initial_tests, error):
-    return repr(sorted(initial_tests))+"-"+repr(sorted([ind for ind,x in enumerate(error) if x==1]))
+    return repr(sorted(initial_tests))+"-"+repr(sorted(map(lambda x: x[0], filter(lambda x: x[1] ==1, error.items()))))
 
 def addTests(ei, next_tests):
     """
