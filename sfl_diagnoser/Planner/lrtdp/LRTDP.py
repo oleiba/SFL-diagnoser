@@ -1,4 +1,4 @@
-import SFL_diagnoser.Planner.lrtdp.lrtdpState
+import sfl_diagnoser.Planner.lrtdp.lrtdpState
 
 __author__ = 'amir'
 
@@ -21,7 +21,7 @@ class LRTDP(object):
         if key in self.states:
             print key, "saved!"
             return self.states[key]
-        state = SFL_diagnoser.Planner.lrtdp.lrtdpState.LrtdpState(experimentInstance.Copy(), self.approach)
+        state = sfl_diagnoser.Planner.lrtdp.lrtdpState.LrtdpState(experimentInstance.Copy(), self.approach)
         self.states[key]= state
         return self.states[key]
 
