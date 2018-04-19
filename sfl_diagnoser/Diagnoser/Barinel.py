@@ -19,7 +19,7 @@ class Barinel:
         self.diagnoses = []
 
 
-    def set_matrix_error(self,M,e):
+    def set_matrix_error(self, M, e):
         self.M_matrix = M
         self.e_vector = e
 
@@ -66,33 +66,3 @@ class Barinel:
         self.generate_probs()
 
         return self.diagnoses
-
-def load_file_with_header(file):
-    with open(file,"r") as f:
-        lines = list(csv.reader(f))
-        probs=[float(x) for x in lines[0]]
-        comps_num=len(probs)
-        tests = lines[1:]
-        erorr_vector = [int(t[comps_num]) for t in  tests]
-        Matrix = [[int(float(y)) for y in x[:comps_num]] for x in  tests]
-        ans = Barinel()
-        ans.set_prior_probs(probs)
-        ans.set_matrix_error(Matrix,erorr_vector)
-        return ans
-
-
-
-def main(matrix_file, out_file):
-    bar = load_file_with_header(matrix_file)
-    diags = bar.run()
-    sorted_diags = sorted(diags, key=lambda d: d.probability, reverse=True)
-    with open(out_file, "wb") as f:
-        f.write(str(sorted_diags))
-
-if __name__=="__main__":
-    if len(sys.argv) != 3:
-        print "Usage: Barinel.py matrix_file out_file"
-        exit()
-    main(sys.argv[1], sys.argv[2])
-
-
