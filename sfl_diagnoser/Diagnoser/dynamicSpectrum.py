@@ -1,6 +1,6 @@
-import sfl_diagnoser.Diagnoser
-# from sfl_diagnoser.Diagnoser.diagnoserUtils import write_planning_file
-from sfl_diagnoser.Diagnoser.FullMatrix import FullMatrix
+import SFL_diagnoser.Diagnoser
+# from SFL_diagnoser.Diagnoser.diagnoserUtils import write_planning_file
+from SFL_diagnoser.Diagnoser.FullMatrix import FullMatrix
 
 
 class dynamicSpectrum(object):

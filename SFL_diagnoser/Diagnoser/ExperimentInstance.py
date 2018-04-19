@@ -3,12 +3,12 @@ import math
 import random
 from math import ceil
 import Diagnosis
-import sfl_diagnoser.Diagnoser.dynamicSpectrum
-from sfl_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
-import sfl_diagnoser.Planner.domain_knowledge
+import SFL_diagnoser.Diagnoser.dynamicSpectrum
+from SFL_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
+import SFL_diagnoser.Planner.domain_knowledge
 import numpy
-import sfl_diagnoser.Diagnoser.diagnoserUtils
-from sfl_diagnoser.Diagnoser.Singelton import Singleton
+import SFL_diagnoser.Diagnoser.diagnoserUtils
+from SFL_diagnoser.Diagnoser.Singelton import Singleton
 
 class Instances_Management(object):
     __metaclass__ = Singleton
@@ -27,7 +27,7 @@ class Instances_Management(object):
 
     def create_instance_from_key(self, key):
         initial, failed = key.split('-')
-        error = dict([(i,1 if i in eval(failed) else 0) for i in Experiment_Data().POOL])
+        error = dict([(i,1 if i in eval(failed) else 0) for i in eval(initial)])
         return ExperimentInstance(eval(initial), error)
 
 TERMINAL_PROB = 0.7
@@ -39,7 +39,7 @@ class ExperimentInstance:
         self.diagnoses=[]
 
     def initials_to_DS(self):
-        ds= sfl_diagnoser.Diagnoser.dynamicSpectrum.dynamicSpectrum()
+        ds= SFL_diagnoser.Diagnoser.dynamicSpectrum.dynamicSpectrum()
         ds.TestsComponents = copy.deepcopy([Experiment_Data().POOL[test] for test in self.initial_tests])
         ds.probabilities=list(Experiment_Data().PRIORS)
         ds.error=[self.error[test] for test in self.initial_tests]
@@ -308,7 +308,7 @@ class ExperimentInstance:
 
 
 def create_key(initial_tests, error):
-    return repr(sorted(initial_tests))+"-"+repr(sorted(map(lambda x: x[0], filter(lambda x: x[1] ==1, error.items()))))
+    return repr(sorted(initial_tests))+"-"+repr(sorted([ind for ind,x in enumerate(error) if x==1]))
 
 def addTests(ei, next_tests):
     """

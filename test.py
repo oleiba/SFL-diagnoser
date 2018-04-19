@@ -1,7 +1,7 @@
-from sfl_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile, write_planning_file, write_merged_matrix
-# from sfl_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile, write_planning_file, write_merged_matrix
-from sfl_diagnoser.Diagnoser.Diagnosis_Results import Diagnosis_Results
-from sfl_diagnoser.Planner.HP_Random import main_HP
+from SFL_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile, write_planning_file, write_merged_matrix
+# from SFL_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile, write_planning_file, write_merged_matrix
+# from SFL_diagnoser.Diagnoser.Diagnosis_Results import Diagnosis_Results
+
 
 def merge_same_components(self):
     components_vector = {}
@@ -37,14 +37,11 @@ def abstraction():
                                                             ["T3", ["a", "b", "c"], 1],
                                                             ["T4", ["a", "b", "c"], 0]])
     instance = readPlanningFile(r"c:\temp\yemp_matrix.txt")
-    write_planning_file(r"c:\temp\yemp_matrix.txt", ["a"], [["T1", [r"src\main\org\apache\tools\ant\DirectoryScanner.java", r"src\main\org\apache\tools\tar\TarBuffer.java", r"src\main\org\apache\tools\ant\taskdefs\Parallel.java"], 1],
-                                                            ["T2", [r"src\main\org\apache\tools\tar\TarBuffer.java"], 0],
-                                                            ["T3", [r"src\main\org\apache\tools\ant\DirectoryScanner.java", r"src\main\org\apache\tools\tar\TarBuffer.java", r"src\main\org\apache\tools\ant\taskdefs\Concat.java"], 1],
-                                                            ["T4", [r"src\main\org\apache\tools\ant\DirectoryScanner.java", r"src\main\org\apache\tools\tar\TarBuffer.java"], 0]])
+    write_planning_file(r"c:\temp\yemp_matrix.txt", ["a"], [["T1", ["a", "b", "d"], 1],
+                                                            ["T2", ["b"], 0],
+                                                            ["T3", ["a", "b"], 1],
+                                                            ["T4", ["a", "b"], 0]])
     instance = readPlanningFile(r"c:\temp\yemp_matrix.txt")
-    instance.diagnose()
-    res = Diagnosis_Results(instance.diagnoses, instance.initial_tests, instance.error)
-    res.save_diagnoses_to_csv(r"c:\temp\diagnosis_example.csv")
     write_planning_file(r"c:\temp\yemp_matrix.txt", ["a"], [["T1", ["a", "b"], 1],
                                                             ["T2", ["b"], 0],
                                                             ["T3", ["a", "b"], 1],
@@ -55,11 +52,6 @@ def abstraction():
 
 if __name__ == "__main__":
     # check_influence()
-    # function_instance = readPlanningFile(
-    #     r"C:\Users\User\Downloads\MatrixFile2 (2).txt")
-    #
-    # print main_HP(function_instance)
-    #
     # exit()
     abstraction()
     write_planning_file(r"c:\temp\yemp_matrix.txt", ["a"], [["T1", ["a", "c"], 1],

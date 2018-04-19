@@ -1,4 +1,4 @@
-from sfl_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
+from SFL_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
 from scipy.stats import entropy
 
 class Diagnosis_Results(object):
@@ -15,7 +15,6 @@ class Diagnosis_Results(object):
         self.metrics = self._calculate_metrics()
         for key, value in self.metrics.items():
             setattr(self, key, value)
-
 
     def _calculate_metrics(self):
         """
@@ -149,13 +148,3 @@ class Diagnosis_Results(object):
         tests = map(lambda test: (sorted(test[1]), self.error[test[0]]), filter(lambda test: test[0] in self.initial_tests, self.pool.items()))
         distinct_tests = set(map(str, tests))
         return distinct_tests
-
-    def save_diagnoses_to_csv(self, csv_path):
-        def format_diagnosis(diagnosis):
-            return str(map(lambda id: Experiment_Data().COMPONENTS_NAMES[id], diagnosis)).replace(",", ";")
-
-        import csv
-        with open(csv_path, "wb") as f:
-            writer = csv.writer(f)
-            writer.writerows([["Diagnosis Components", "Probability"]] +
-                             map(lambda diag: (format_diagnosis(diag.diagnosis), str(diag.probability)), self.diagnoses))

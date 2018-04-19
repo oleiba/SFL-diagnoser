@@ -1,6 +1,6 @@
-import sfl_diagnoser.Diagnoser.ExperimentInstance
-from sfl_diagnoser.Diagnoser.FullMatrix import FullMatrix
-from sfl_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
+import SFL_diagnoser.Diagnoser.ExperimentInstance
+from SFL_diagnoser.Diagnoser.FullMatrix import FullMatrix
+from SFL_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
 
 __author__ = 'amir'
 
@@ -33,14 +33,13 @@ def readPlanningFile(fileName):
     initials=eval(InitialsStr[0])
     components = dict(eval(components_names[0]))
     testsPool={}
-    estimatedTestsPool = {}
+    estimatedTestsPool = None
     error={}
     for td in TestDetailsStr:
         tup = tuple(td.split(";"))
         ind, actualTrace, err = None, None, None
         if len(tup) == 3:
             ind, actualTrace, err = tuple(td.split(";"))
-            estimatedTestsPool = None
         if len(tup) == 4:
             ind, actualTrace, estimatedTrace, err = tuple(td.split(";"))
             estimatedTestsPool[ind] = eval(estimatedTrace)
@@ -49,7 +48,7 @@ def readPlanningFile(fileName):
         testsPool[ind] = actualTrace
         error[ind] = err
     Experiment_Data().set_values(priors, bugs, testsPool, components, estimatedTestsPool)
-    return sfl_diagnoser.Diagnoser.ExperimentInstance.ExperimentInstance(initials, error)
+    return SFL_diagnoser.Diagnoser.ExperimentInstance.ExperimentInstance(initials, error)
 
 
 def diagnoseTests():
