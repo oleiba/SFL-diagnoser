@@ -14,6 +14,7 @@ import sfl_diagnoser.Diagnoser.ExperimentInstance
 
 def main_HP(ei):
     steps = 0
+    ei.diagnose()
     while not (ei.isTerminal() or ei.AllTestsReached() ):
         ei = sfl_diagnoser.Diagnoser.ExperimentInstance.addTests(ei, ei.hp_next())
         steps = steps + 1

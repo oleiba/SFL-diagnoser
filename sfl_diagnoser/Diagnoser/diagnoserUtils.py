@@ -33,7 +33,7 @@ def readPlanningFile(fileName):
     initials=eval(InitialsStr[0])
     components = dict(eval(components_names[0]))
     testsPool={}
-    estimatedTestsPool = None
+    estimatedTestsPool = {}
     error={}
     for td in TestDetailsStr:
         tup = tuple(td.split(";"))

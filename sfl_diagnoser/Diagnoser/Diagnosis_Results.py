@@ -50,6 +50,9 @@ class Diagnosis_Results(object):
     def get_metrics_names(self):
         return map(lambda m:m[0], self._get_metrics_list())
 
+    def __repr__(self):
+        return repr(self.metrics)
+
     @staticmethod
     def precision_recall_for_diagnosis(buggedComps, dg, pr, validComps):
         fp = len([i1 for i1 in dg if i1 in validComps])
