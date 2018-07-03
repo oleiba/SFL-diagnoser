@@ -27,6 +27,7 @@ class Diagnosis_Results(object):
         metrics["precision"] = precision
         metrics["recall"] = recall
         metrics["entropy"] = self.calc_entropy()
+        metrics["component_entropy"] = self.calc_component_entropy()
         metrics["num_comps"] = len(self.get_components())
         metrics["num_tests"] = len(self.get_tests())
         metrics["num_distinct_traces"] = len(self.get_distinct_traces())
@@ -142,6 +143,9 @@ class Diagnosis_Results(object):
 
     def calc_entropy(self):
         return entropy(map(lambda diag: diag.probability, self.diagnoses))
+
+    def calc_component_entropy(self):
+        return entropy(map(lambda x: x[1], self.get_components_probabilities()))
 
     def get_uniform_entropy(self):
         uniform_probability = 1.0/len(self.diagnoses)
