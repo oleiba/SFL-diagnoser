@@ -34,3 +34,5 @@ class Ochiai_Rank():
     def advance_counter(self, i, j):
         self.counters[i][j] += 1
 
+    def __repr__(self):
+        return "{0} {1} {2} Rank: {3}".format(self.counters[1][1], self.counters[1][0], self.counters[0][1], self.get_rank())
