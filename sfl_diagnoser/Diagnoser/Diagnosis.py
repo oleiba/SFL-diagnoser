@@ -24,6 +24,10 @@ class Diagnosis:
     def __repr__(self):
         return str(self.diagnosis)+" P: "+str(self.probability)
 
+    def as_dict(self):
+        return {'_diagnosis': self.diagnosis, '_probability': self.probability}
+
+
 
 
 
