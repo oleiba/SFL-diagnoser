@@ -112,6 +112,29 @@ class ExperimentInstance:
         tests_probabilities = [x / sum(tests_probabilities) for x in tests_probabilities]
         return optionals, tests_probabilities
 
+    def next_tests_by_prob(self):
+        """
+        order tests by probabilities of the components
+        return tests and probabilities
+        """
+        compsProbs = self.get_components_probabilities()
+        comps_probabilities = dict(compsProbs)
+        optionals = self.get_optionals_actions()
+        assert len(optionals) > 0
+        tests_probabilities = []
+        for test in optionals:
+            trace = Experiment_Data().ESTIMATED_POOL[test]
+            test_p = 0.0
+            for comp in trace:
+                test_p += comps_probabilities.get(comp, 0) * trace.get(comp, 0)
+            tests_probabilities.append(test_p)
+        if sum(tests_probabilities) == 0.0:
+            return self.get_optionals_probabilities()
+        tests_probabilities = [abs(x) for x in tests_probabilities]
+        tests_probabilities = [x / sum(tests_probabilities) for x in tests_probabilities]
+        return optionals, tests_probabilities
+
+
     def next_tests_by_bd(self):
         self.diagnose()
         probabilities = []
@@ -189,7 +212,19 @@ class ExperimentInstance:
 
     def hp_next(self):
         optionals, probabilities = self.next_tests_by_hp()
+        numpy.random.seed(0)
         return numpy.random.choice(optionals, 1, p = probabilities).tolist()[0]
+
+    def hp_next_by_prob(self):
+        optionals, probabilities = self.next_tests_by_prob()
+        numpy.random.seed(0)
+        return numpy.random.choice(optionals, 1, p=probabilities).tolist()[0]
+
+    def hp_next_by_prob_random(self):
+        optionals, probabilities = self.next_tests_by_prob()
+        numpy.random.seed(0)
+        # return numpy.random.choice(optionals, 1, p=probabilities).tolist()[0]
+        return random.choice(optionals)
 
     def entropy_next(self, threshold = 1.2, batch=1):
         optionals, information =  self.next_tests_by_entropy(threshold)

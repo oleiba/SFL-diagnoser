@@ -1,5 +1,6 @@
 __author__ = 'amir'
 import SFL_diagnoser.Diagnoser.ExperimentInstance
+from SFL_diagnoser.Diagnoser.Diagnosis_Results import Diagnosis_Results
 
 """
  basic planners:
@@ -14,12 +15,40 @@ import SFL_diagnoser.Diagnoser.ExperimentInstance
 
 def main_HP(ei):
     steps = 0
-    while not (ei.isTerminal() or ei.AllTestsReached() ):
+    listPre = []
+    listRecall = []
+    while not (ei.isTerminal() or ei.AllTestsReached()):
         ei = SFL_diagnoser.Diagnoser.ExperimentInstance.addTests(ei, ei.hp_next())
         steps = steps + 1
+        precision, recall = ei.calc_precision_recall()
+        results = Diagnosis_Results(ei.diagnoses, ei.initial_tests, ei.error)
+        # print results.get_metrics_names()
+        # print results.get_metrics_values()
+        # print sorted(ei.diagnoses, key=lambda x: x.probability, reverse=True)
+        listPre.append(precision)
+        listRecall.append(recall)
     precision, recall=ei.calc_precision_recall()
-    return precision, recall, steps, repr(ei)
+    return precision, recall, steps, repr(ei), listPre, listRecall
 
+
+def main_HP_by_proba(ei):
+    steps = 0
+    listPre = []
+    listRecall = []
+    while not (ei.isTerminal() or ei.AllTestsReached()):
+        ei.diagnose()
+        ei = SFL_diagnoser.Diagnoser.ExperimentInstance.addTests(ei, ei.hp_next_by_prob())
+        steps = steps + 1
+        precision, recall = ei.calc_precision_recall()
+        # results = Diagnosis_Results(ei.diagnoses, ei.initial_tests, ei.error)
+        # print results.get_metrics_names()
+        # print results.get_metrics_values()
+        score = ei.getMaxProb()
+        listPre.append(precision)
+        listRecall.append(recall)
+
+    precision, recall=ei.calc_precision_recall()
+    return precision, recall, steps, repr(ei), listPre, listRecall
 
 def main_Random(ei):
     steps = 0
