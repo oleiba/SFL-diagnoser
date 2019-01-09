@@ -64,6 +64,12 @@ class TF(object):
             import scipy.optimize
             self.max_value = -scipy.optimize.minimize(self.probabilty_TF,initialGuess,method="L-BFGS-B"
                                         ,bounds=zip(lb,ub), tol=1e-2,options={'maxiter':10}).fun
+            # self.max_value = -scipy.optimize.minimize(self.probabilty_TF,initialGuess,method="TNC"
+            #                             ,bounds=zip(lb,ub), tol=1e-2,options={'maxiter':10}).fun
+            # self.max_value = -scipy.optimize.minimize(self.probabilty_TF,initialGuess,method="SLSQP"
+            #                             ,bounds=zip(lb,ub), tol=1e-2,options={'maxiter':10}).fun
+            # self.max_value = -scipy.optimize.minimize(self.probabilty_TF,initialGuess,method="trust-constr"
+            #                             ,bounds=zip(lb,ub), tol=1e-2,options={'maxiter':10}).fun
             # self.max_value = self.maximize_by_gradient()
             # self.max_value = -pso(self.probabilty_TF, lb, ub, minfunc=1e-3, minstep=1e-3, swarmsize=20,maxiter=10)[1]
             # self.max_value = -self.probabilty_TF(initialGuess)
