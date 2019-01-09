@@ -31,10 +31,11 @@ def add(tf):
     tf.maximize()
     instances.append(tf)
 
-class TF:
-    def __init__(self,matrix,e,d):
-        self.activity = zip(matrix,e)
-        self.diagnosis = d
+class TF(object):
+    def __init__(self, matrix, error, diagnosis):
+        self.activity = zip(map(tuple, matrix), error)
+        self.diagnosis = diagnosis
+        self.active_components = dict(map(lambda a: (a[0], filter(functools.partial(tuple.__getitem__, a[0]), self.diagnosis)), self.activity))
         self.max_value = None
         # add(self)
 
@@ -42,8 +43,8 @@ class TF:
         def test_prob(v, e):
             # if e==0 : h1*h2*h3..., if e==1: 1-h1*h2*h3...
             return e + ((-2.0 * e + 1.0 ) * reduce(operator.mul,
-                   map(h_dict.get, filter(functools.partial(list.__getitem__, v), self.diagnosis)), 1.0))
-        return reduce(operator.mul, [test_prob(*a) for a in self.activity], 1.0)
+                                                   map(h_dict.get, self.active_components[v]), 1.0))
+        return reduce(operator.mul, map(functools.partial(apply, test_prob), self.activity), 1.0)
 
     def probabilty_TF(self,h):
         h_dict={}
@@ -62,7 +63,7 @@ class TF:
             ub=[1 for _ in self.diagnosis]
             import scipy.optimize
             self.max_value = -scipy.optimize.minimize(self.probabilty_TF,initialGuess,method="L-BFGS-B"
-                                        ,bounds=zip(lb,ub), tol=1e-2,options={"maxiter":10}).fun
+                                        ,bounds=zip(lb,ub), tol=1e-2,options={'maxiter':10}).fun
             # self.max_value = self.maximize_by_gradient()
             # self.max_value = -pso(self.probabilty_TF, lb, ub, minfunc=1e-3, minstep=1e-3, swarmsize=20,maxiter=10)[1]
             # self.max_value = -self.probabilty_TF(initialGuess)
