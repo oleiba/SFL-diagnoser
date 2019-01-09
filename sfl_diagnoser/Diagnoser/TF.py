@@ -2,6 +2,8 @@ __author__ = 'amir'
 
 from pyswarm import pso
 from LightPSO import LightPSO
+import operator
+import functools
 
 instances = []
 calls = 0
@@ -36,12 +38,12 @@ class TF:
         self.max_value = None
         # add(self)
 
-    def probabilty(self,h_dict):
-        def test_prob(v,e):
+    def probabilty(self, h_dict):
+        def test_prob(v, e):
             # if e==0 : h1*h2*h3..., if e==1: 1-h1*h2*h3...
-            return e + ((-2.0 * e +1) * reduce(lambda x, y: x*y,
-                   map(lambda c: h_dict.get(c, 1) * v[c], filter(lambda c: v[c] == 1, self.diagnosis)), 1))
-        return reduce(lambda x,y: x*y, map(lambda a:test_prob(a[0],a[1]), self.activity), 1.0)
+            return e + ((-2.0 * e + 1.0 ) * reduce(operator.mul,
+                   map(h_dict.get, filter(functools.partial(list.__getitem__, v), self.diagnosis)), 1.0))
+        return reduce(operator.mul, [test_prob(*a) for a in self.activity], 1.0)
 
     def probabilty_TF(self,h):
         h_dict={}
