@@ -1,4 +1,5 @@
-from SFL_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
+from sfl_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
+from sfl_diagnoser.Diagnoser.Ochiai_Rank import Ochiai_Rank
 from scipy.stats import entropy
 
 class Diagnosis_Results(object):
@@ -12,6 +13,7 @@ class Diagnosis_Results(object):
         self.bugs = bugs
         if bugs == None:
             self.bugs = Experiment_Data().BUGS
+        self.components = set(reduce(list.__add__ , map(lambda test: test[1], filter(lambda test: test[0] in self.initial_tests, self.pool.items())), []))
         self.metrics = self._calculate_metrics()
         for key, value in self.metrics.items():
             setattr(self, key, value)
@@ -27,6 +29,7 @@ class Diagnosis_Results(object):
         metrics["precision"] = precision
         metrics["recall"] = recall
         metrics["entropy"] = self.calc_entropy()
+        metrics["component_entropy"] = self.calc_component_entropy()
         metrics["num_comps"] = len(self.get_components())
         metrics["num_tests"] = len(self.get_tests())
         metrics["num_distinct_traces"] = len(self.get_distinct_traces())
@@ -39,6 +42,7 @@ class Diagnosis_Results(object):
         metrics["num_bugs"] = len(self.get_bugs())
         metrics["wasted"] = self.calc_wasted_components()
         metrics["top_k"] = self.calc_top_k()
+        metrics["ochiai"] = self.calc_ochiai_values()
         return metrics
 
     def _get_metrics_list(self):
@@ -49,6 +53,9 @@ class Diagnosis_Results(object):
 
     def get_metrics_names(self):
         return map(lambda m:m[0], self._get_metrics_list())
+
+    def __repr__(self):
+        return repr(self.metrics)
 
     @staticmethod
     def precision_recall_for_diagnosis(buggedComps, dg, pr, validComps):
@@ -89,6 +96,9 @@ class Diagnosis_Results(object):
     def get_bugs(self):
         return self.bugs
 
+    def get_initial_tests_traces(self):
+        return map(lambda test: (sorted(test[1]), self.error[test[0]]),
+            filter(lambda test: test[0] in self.initial_tests, self.pool.items()))
 
     def _get_tests_by_error(self, error):
         tests = filter(lambda test: test[0] in self.initial_tests, self.pool.items())
@@ -98,13 +108,13 @@ class Diagnosis_Results(object):
         return set(reduce(list.__add__, self.pool.values()))
 
     def _get_components_by_error(self, error):
-        return set(reduce(list.__add__,self._get_tests_by_error(error).values(), []))
+        return set(reduce(list.__add__, self._get_tests_by_error(error).values(), []))
 
     def get_components_in_failed_tests(self):
         return self._get_components_by_error(1)
 
     def get_components_in_passed_tests(self):
-        return self._get_components_by_error(1)
+        return self._get_components_by_error(0)
 
     def get_components_probabilities(self):
         """
@@ -140,11 +150,22 @@ class Diagnosis_Results(object):
     def calc_entropy(self):
         return entropy(map(lambda diag: diag.probability, self.diagnoses))
 
+    def calc_component_entropy(self):
+        return entropy(map(lambda x: x[1], self.get_components_probabilities()))
+
     def get_uniform_entropy(self):
         uniform_probability = 1.0/len(self.diagnoses)
         return entropy(map(lambda diag: uniform_probability, self.diagnoses))
 
     def get_distinct_traces(self):
-        tests = map(lambda test: (sorted(test[1]), self.error[test[0]]), filter(lambda test: test[0] in self.initial_tests, self.pool.items()))
-        distinct_tests = set(map(str, tests))
+        distinct_tests = set(map(str, self.get_initial_tests_traces()))
         return distinct_tests
+
+    def calc_ochiai_values(self):
+        ochiai = {}
+        for component in self.components:
+            ochiai[component] = Ochiai_Rank()
+        for trace, error in self.get_initial_tests_traces():
+            for component in self.components:
+                    ochiai[component].advance_counter(1 if component in trace else 0, error)
+        return ochiai

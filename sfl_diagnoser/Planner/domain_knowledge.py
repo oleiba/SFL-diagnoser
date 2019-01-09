@@ -4,7 +4,7 @@
 
 import numpy
 
-from SFL_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
+from sfl_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
 
 
 def pass_probability(ei):
@@ -202,4 +202,3 @@ def seperator_hp(ei):
     if sum(probabilities) == 0:
         return optionals, [1/ len(optionals) for x in optionals]
     return optionals,[x / sum(probabilities) for x in probabilities]
-

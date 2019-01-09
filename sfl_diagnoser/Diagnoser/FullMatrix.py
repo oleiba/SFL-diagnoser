@@ -1,4 +1,5 @@
-from SFL_diagnoser.Diagnoser import Barinel
+from sfl_diagnoser.Diagnoser import Barinel
+
 
 class FullMatrix(object):
     def __init__(self):
@@ -43,4 +44,4 @@ class FullMatrix(object):
                 newErr.append(err)
         optimizedMatrix.matrix=newMatrix
         optimizedMatrix.error=newErr
-        return optimizedMatrix,sorted(chosen)
+        return optimizedMatrix, sorted(chosen)
