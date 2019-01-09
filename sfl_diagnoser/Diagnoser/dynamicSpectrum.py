@@ -14,7 +14,7 @@ class dynamicSpectrum(object):
         ans=FullMatrix()
         ans.probabilities=list(self.probabilities)
         ans.error=list(self.error)
-        ans.matrix=[[1 if i in test else 0 for i in range(len(self.probabilities)) ] for test in self.TestsComponents]
+        ans.matrix = map(lambda test: map(lambda comp: 1 if comp in test else 0, range(len(self.probabilities))), self.TestsComponents)
         return ans
 
     def remove_duplicate_tests(self):

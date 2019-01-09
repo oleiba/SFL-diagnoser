@@ -24,24 +24,29 @@ class FullMatrix(object):
     # return: optimized FullMatrix, chosen_components( indices)
     @staticmethod
     def optimize_FullMatrix(fullMatrix):
-        chosen=[]
-        UnusedComps=range(len(fullMatrix.probabilities))
-        for test,err in zip(fullMatrix.matrix,fullMatrix.error):
-            if err==0:
-                continue
-            for comp in list(UnusedComps):
-                if test[comp]==1:
-                    chosen.append(comp)
-                    UnusedComps.remove(comp)
+        chosen = FullMatrix.get_used_comps(fullMatrix)
         optimizedMatrix=FullMatrix()
-        optimizedMatrix.probabilities=[x[1] for x in enumerate(fullMatrix.probabilities) if x[0] in chosen]
+        optimizedMatrix.probabilities = map(lambda c: fullMatrix.probabilities[c], chosen)
         newErr=[]
         newMatrix=[]
         for test,err in zip(fullMatrix.matrix,fullMatrix.error):
-            newTest=[x[1] for x in enumerate(test) if x[0] in chosen]
-            if 1 in newTest: ## optimization could remove all comps of a test
-                newMatrix.append(newTest)
+            new_test = map(lambda c: test[c], chosen)
+            if any(new_test): ## optimization could remove all comps of a test
+                newMatrix.append(new_test)
                 newErr.append(err)
         optimizedMatrix.matrix=newMatrix
         optimizedMatrix.error=newErr
         return optimizedMatrix, sorted(chosen)
+
+    @staticmethod
+    def get_used_comps(fullMatrix):
+        chosen = []
+        UnusedComps = range(len(fullMatrix.probabilities))
+        for test, err in zip(fullMatrix.matrix, fullMatrix.error):
+            if err == 0:
+                continue
+            for comp in list(UnusedComps):
+                if test[comp] == 1:
+                    chosen.append(comp)
+                    UnusedComps.remove(comp)
+        return chosen
