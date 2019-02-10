@@ -168,19 +168,3 @@ def save_ds_to_matrix_file(ds, out_file):
     str(details[0]), map(lambda c: Experiment_Data().COMPONENTS_NAMES[c], details[1]), details[2]),
                         list(zip(ds.tests_names, ds.TestsComponents, ds.error)))
     write_planning_file(out_file, map(lambda c: Experiment_Data().COMPONENTS_NAMES[c], Experiment_Data().BUGS), tests_details)
-
-if __name__=="__main__":
-    summarize_results(["CVE-2016-7531", "CVE-2016-7533", "CVE-2016-8866", "CVE-2017-5506", "CVE-2017-5508", "CVE-2017-5509", "CVE-2017-5510",
-                     "CVE-2017-5511"],
-                      "bugged_dll.txt",
-                      "function_diagnosis.txt",
-                      "dll_matrix.txt",
-                      "function_matrix.txt",
-                      "xref_matrix.txt",
-                      r"C:\temp\cve_results2.csv")
-    # print "dll"
-    # dll_diagnosis("dll_matrix.txt", "dll_result.csv")
-    # print "function"
-    # dll_diagnosis("function_matrix.txt", "function_result.csv")
-    # print "xref"
-    # dll_diagnosis("xref_matrix.txt", "xref_result.csv")

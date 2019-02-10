@@ -175,4 +175,3 @@ class Diagnosis_Results(object):
             for component in self.components:
                     ochiai[component].advance_counter(1 if component in trace else 0, error)
         return ochiai
-
