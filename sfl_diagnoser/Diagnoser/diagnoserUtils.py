@@ -31,7 +31,10 @@ def readPlanningFile(fileName, delimiter=";"):
     priors=eval(priorsStr[0])
     bugs=eval(BugsStr[0])
     initials=eval(InitialsStr[0])
-    components = dict(eval(eval(components_names[0].replace(delimiter, ','))))
+    try:
+        components = dict(eval(components_names[0].replace(delimiter, ',')))
+    except:
+        components = dict(eval(eval(components_names[0].replace(delimiter, ','))))
     testsPool={}
     estimatedTestsPool = {}
     error={}
