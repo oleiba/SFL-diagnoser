@@ -30,24 +30,20 @@ def add(tf):
     instances.append(tf)
 
 class TF:
-    def __init__(self,matrix,e,d):
-        self.activity = zip(matrix,e)
+    def __init__(self, matrix, e, d):
         self.diagnosis = d
+        self.activity = zip(map(lambda v: filter(lambda c: v[c] == 1, self.diagnosis), matrix), e)
         self.max_value = None
         # add(self)
 
-    def probabilty(self,h_dict):
-        def test_prob(v,e):
+    def probabilty(self, h_dict):
+        def test_prob(v, e):
             # if e==0 : h1*h2*h3..., if e==1: 1-h1*h2*h3...
-            return e + ((-2.0 * e +1) * reduce(lambda x, y: x*y,
-                   map(lambda c: h_dict.get(c, 1) * v[c], filter(lambda c: v[c] == 1, self.diagnosis)), 1))
-        return reduce(lambda x,y: x*y, map(lambda a:test_prob(a[0],a[1]), self.activity), 1.0)
+            return e + ((-2.0 * e + 1) * reduce(float.__mul__, map(lambda c: h_dict.get(c, 1.0), v), 1.0))
+        return reduce(float.__mul__, map(lambda a: test_prob(a[0], a[1]), self.activity), 1.0)
 
-    def probabilty_TF(self,h):
-        h_dict={}
-        for comp,h_score in zip(self.diagnosis,h):
-            h_dict[comp]=h_score
-        return -self.probabilty(h_dict)
+    def probabilty_TF(self, h):
+        return -self.probabilty(dict(zip(self.diagnosis, h)))
 
     def not_saved(self):
         pass
@@ -56,8 +52,8 @@ class TF:
         if self.max_value == None:
             self.not_saved()
             initialGuess=[0.1 for _ in self.diagnosis]
-            lb=[0 for _ in self.diagnosis]
-            ub=[1 for _ in self.diagnosis]
+            lb = [0 for _ in self.diagnosis]
+            ub = [1 for _ in self.diagnosis]
             import scipy.optimize
             self.max_value = -scipy.optimize.minimize(self.probabilty_TF,initialGuess,method="L-BFGS-B"
                                         ,bounds=zip(lb,ub), tol=1e-2,options={"maxiter":10}).fun
