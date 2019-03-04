@@ -32,7 +32,7 @@ def readPlanningFile(fileName, delimiter=";"):
     bugs=eval(BugsStr[0])
     initials=eval(InitialsStr[0])
     try:
-        components = dict(eval(components_names[0].replace(delimiter, ',')))
+        components = dict(map(lambda x: x if isinstance(x, tuple) else eval(x), eval(components_names[0].replace(delimiter, ','))))
     except:
         components = dict(eval(eval(components_names[0].replace(delimiter, ','))))
     testsPool={}
