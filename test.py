@@ -51,24 +51,24 @@ def abstraction():
 
 
 if __name__ == "__main__":
-    from sfl_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile
-    from sfl_diagnoser.Diagnoser.Diagnosis_Results import Diagnosis_Results
-    import sfl_diagnoser.Diagnoser.ExperimentInstance
-
-    inst = readPlanningFile(r"C:\Users\User\Downloads\inputMatrix6_amir.txt")
-    inst.diagnose()
-    results = Diagnosis_Results(inst.diagnoses, inst.initial_tests, inst.error)
-    results.get_metrics_names()
-    results.get_metrics_values()
-    print results
-    exit()
-    ei = sfl_diagnoser.Diagnoser.ExperimentInstance.addTests(inst, inst.hp_next())
-
-    # check_influence()
+    # from sfl_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile
+    # from sfl_diagnoser.Diagnoser.Diagnosis_Results import Diagnosis_Results
+    # import sfl_diagnoser.Diagnoser.ExperimentInstance
+    #
+    # inst = readPlanningFile(r"C:\Users\User\Downloads\inputMatrix6_amir.txt")
+    # inst.diagnose()
+    # results = Diagnosis_Results(inst.diagnoses, inst.initial_tests, inst.error)
+    # results.get_metrics_names()
+    # results.get_metrics_values()
+    # print results
     # exit()
-    base = readPlanningFile(r"C:\Users\User\Downloads\MatrixFile4.txt")
-    from sfl_diagnoser.Planner.HP_Random import main_HP
-    main_HP(base)
+    # ei = sfl_diagnoser.Diagnoser.ExperimentInstance.addTests(inst, inst.hp_next())
+    #
+    # # check_influence()
+    # # exit()
+    # base = readPlanningFile(r"C:\Users\User\Downloads\MatrixFile4.txt")
+    # from sfl_diagnoser.Planner.HP_Random import main_HP
+    # main_HP(base)
 
 
     abstraction()

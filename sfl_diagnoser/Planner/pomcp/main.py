@@ -27,4 +27,3 @@ if __name__=="__main__":
     file="C:\projs\ptry\lrtdp\\10_uniform_15_all.txt"
     file="C:\projs\ptry\lrtdp\\10_0.6_0.0_15.txt"
     ei= sfl_diagnoser.Diagnoser.diagnoserUtils.readPlanningFile(file)
-    print main(ei)

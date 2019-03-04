@@ -1,4 +1,3 @@
-
 # similarity measures
 # each function recieves experiments instance and
 # return sorted list of optional tests ordered by the chosen metric
@@ -54,6 +53,3 @@ for f in ["braycurtis", "canberra", "chebyshev", "cityblock", "cosine", "euclide
 for f in ["dice", "hamming", "jaccard", "kulsinski", "matching", "rogerstanimoto", "russellrao", "sokalmichener",
           "sokalsneath", "yule"]:
     similarites_functions[f] = similarity_by_function(scipy.spatial.distance.__dict__[f], is_boolean=True)
-
-
-

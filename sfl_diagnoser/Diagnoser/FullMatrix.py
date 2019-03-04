@@ -1,5 +1,6 @@
 from sfl_diagnoser.Diagnoser import Barinel
 
+
 class FullMatrix(object):
     def __init__(self):
         self.matrix=[] # matrix size define the num of tests

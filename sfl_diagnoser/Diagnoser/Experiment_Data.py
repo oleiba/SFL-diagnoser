@@ -1,5 +1,6 @@
 from sfl_diagnoser.Diagnoser.Singelton import Singleton
 
+
 class Experiment_Data(object):
     __metaclass__ = Singleton
 
@@ -28,8 +29,3 @@ class Experiment_Data(object):
 
     def get_named_bugs(self):
         return map(lambda id: Experiment_Data().COMPONENTS_NAMES[id], Experiment_Data().BUGS)
-
-if __name__ == "__main__":
-    a = Experiment_Data()
-    b = Experiment_Data()
-    pass
