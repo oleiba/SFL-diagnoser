@@ -10,7 +10,7 @@ import TF
 
 prior_p = 0.05
 
-class Barinel:
+class Barinel(object):
 
     def __init__(self):
         self.M_matrix = []
@@ -26,6 +26,17 @@ class Barinel:
     def set_prior_probs(self, probs):
         self.prior_probs=probs
 
+    def get_matrix(self):
+        return self.M_matrix
+
+    def get_error(self):
+        return self.e_vector
+
+    def get_diagnoses(self):
+        return self.diagnoses
+
+    def set_diagnoses(self, diagnoses):
+        self.diagnoses = diagnoses
 
     def non_uniform_prior(self, diag):
         comps = diag.get_diag()
@@ -37,30 +48,32 @@ class Barinel:
     def generate_probs(self):
         new_diagnoses = []
         probs_sum = 0.0
-        for diag in self.diagnoses:
+        for diag in self.get_diagnoses():
             dk = 0.0
             if (self.prior_probs == []):
                 dk = math.pow(prior_p,len(diag.get_diag())) #assuming same prior prob. for every component.
             else:
                 dk = self.non_uniform_prior(diag)
-            tf = TF.TF(self.M_matrix, self.e_vector, diag.get_diag())
-            e_dk = tf.maximize()
+            e_dk = self.tf_for_diag(diag.get_diag())
             diag.probability=e_dk * dk #temporary probability
             probs_sum += diag.probability
-        for diag in self.diagnoses:
+        for diag in self.get_diagnoses():
             temp_prob = diag.get_prob() / probs_sum
             diag.probability=temp_prob
             new_diagnoses.append(diag)
-        self.diagnoses = new_diagnoses
+        self.set_diagnoses(new_diagnoses)
 
+    def tf_for_diag(self, diagnosis):
+        return TF.TF(self.get_matrix(), self.get_error(), diagnosis).maximize()
 
     def run(self):
         #initialize
-        self.diagnoses = []
-        diags = Staccato.Staccato().run(self.M_matrix, self.e_vector)
+        self.set_diagnoses([])
+        new_diagnoses = []
+        diags = Staccato.Staccato().run(self.get_matrix(), self.get_error())
         for diag in diags:
-            self.diagnoses.append(Diagnosis.Diagnosis(diag))
+            new_diagnoses.append(Diagnosis.Diagnosis(diag))
         #generate probabilities
+        self.set_diagnoses(new_diagnoses)
         self.generate_probs()
-
-        return self.diagnoses
+        return self.get_diagnoses()

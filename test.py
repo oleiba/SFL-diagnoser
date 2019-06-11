@@ -2,6 +2,9 @@ from sfl_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile, write_plann
 # from sfl_diagnoser.Diagnoser.diagnoserUtils import readPlanningFile, write_planning_file, write_merged_matrix
 # from sfl_diagnoser.Diagnoser.Diagnosis_Results import Diagnosis_Results
 
+ei = readPlanningFile(r"C:\Users\User\Downloads\temp_matrix.txt")
+ei.diagnose()
+print ei.diagnoses
 
 def merge_same_components(self):
     components_vector = {}

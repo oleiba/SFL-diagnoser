@@ -33,7 +33,8 @@ class Instances_Management(object):
 
 TERMINAL_PROB = 0.7
 
-class ExperimentInstance:
+
+class ExperimentInstance(object):
     def __init__(self, initial_tests, error):
         self.initial_tests=initial_tests
         self.error = error
@@ -82,7 +83,7 @@ class ExperimentInstance:
         """
         self.diagnose()
         compsProbs={}
-        for d in self.diagnoses:
+        for d in self.get_diagnoses():
             p = d.get_prob()
             for comp in d.get_diag():
                 compsProbs[comp] = compsProbs.get(comp,0) + p
@@ -143,7 +144,7 @@ class ExperimentInstance:
         for test in optionals:
             p = 0.0
             trace = Experiment_Data().POOL[test]
-            for d in self.diagnoses:
+            for d in self.get_diagnoses():
                 p += (d.get_prob() / len(d.get_diag())) * ([x for x in d.get_diag() if x in trace])
             probabilities.append(p)
         probabilities = [abs(x) for x in probabilities]
@@ -186,7 +187,7 @@ class ExperimentInstance:
     def entropy(self):
         self.diagnose()
         sum = 0.0
-        for d in self.diagnoses:
+        for d in self.get_diagnoses():
             p = d.get_prob()
             sum -= p * math.log(p)
         return sum
@@ -237,7 +238,7 @@ class ExperimentInstance:
 
     def getMaxProb(self):
         self.diagnose()
-        maxP=max([x.probability for x in self.diagnoses])
+        maxP=max([x.probability for x in self.get_diagnoses()])
         return maxP
 
     def isTerminal(self):
@@ -280,7 +281,7 @@ class ExperimentInstance:
     def get_named_diagnoses(self):
         self.diagnose()
         named_diagnoses = []
-        for diagnosis in self.diagnoses:
+        for diagnosis in self.get_diagnoses():
             named = Diagnosis.Diagnosis(map(lambda id: Experiment_Data().COMPONENTS_NAMES[id], diagnosis.diagnosis))
             named.probability = diagnosis.probability
             named_diagnoses.append(named)
@@ -310,7 +311,7 @@ class ExperimentInstance:
         recall_accum=0
         precision_accum=0
         validComps=[x for x in range(max(reduce(list.__add__, Experiment_Data().POOL.values()))) if x not in Experiment_Data().BUGS]
-        for d in self.diagnoses:
+        for d in self.get_diagnoses():
             dg=d.diagnosis
             pr=d.probability
             precision, recall = ExperimentInstance.precision_recall_diag(Experiment_Data().BUGS, dg, pr, validComps)
@@ -340,6 +341,16 @@ class ExperimentInstance:
 
     def __repr__(self):
         return repr(self.initial_tests)+"-"+repr([name for name,x in self.error.items() if x==1])
+
+    def get_diagnoses(self):
+        self.diagnose()
+        return self.diagnoses
+
+    def get_initials(self):
+        return self.initial_tests
+
+    def get_error(self):
+        return self.error
 
 
 def create_key(initial_tests, error):
