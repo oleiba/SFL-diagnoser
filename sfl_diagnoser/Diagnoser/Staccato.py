@@ -9,9 +9,12 @@ class Staccato():
     def __init__(self):
         self.calls=0
 
-    def rank(self, M_matrix, e_vector,  strip):
+    def rank(self, M_matrix, e_vector,  strip, status):
         M = len(M_matrix[0])
-        ochiai_vector = strip.calc_ochiai_ranks(M_matrix, e_vector)
+        if status == 2:
+            ochiai_vector = strip.calc_crossEntropy_ranks(M_matrix, e_vector)  # TODO
+        else:
+            ochiai_vector = strip.calc_ochiai_ranks(M_matrix, e_vector) #TODO
         ranks =[]
         for i in range(M):
             if (ochiai_vector[i] > 0):
@@ -51,13 +54,13 @@ class Staccato():
                 return True
         return False
 
-    def runStrip(self, M_matrix, e_vector, strip):
+    def runStrip(self, M_matrix, e_vector, strip, status):
         self.calls += 1
         if (self.calls > L):
             return []
         diagnoses = []
         #process
-        ranking = self.rank(M_matrix, e_vector, strip) #rank components
+        ranking = self.rank(M_matrix, e_vector, strip, status) #rank components
         unstripped_comps = strip.unstripped_comps_array_Func()
         if (unstripped_comps != []):
             for comp in unstripped_comps:
@@ -76,9 +79,9 @@ class Staccato():
                 continue
             #strip (if in limits)
             if (self.calls <= L):
-                temp_strip = strip.clone()
-                temp_strip.strip(M_matrix, e_vector, j)
-                diagnoses_tag = self.runStrip(M_matrix, e_vector, temp_strip)
+                temp_strip = strip.clone(status)
+                temp_strip.strip(M_matrix, e_vector, j,status)
+                diagnoses_tag = self.runStrip(M_matrix, e_vector, temp_strip,status)
             else:
                 break
             #scan "tag" diagnoses
@@ -91,11 +94,11 @@ class Staccato():
         #end outer loop
         return diagnoses
 
-    def run(self, M_matrix,  e_vector):
+    def run(self, M_matrix,  e_vector, status):
         #for debug
         self.calls = 0
         N = len(M_matrix)
         M = len(M_matrix[0])
         strip = St_Strip.St_Strip(M, N)
-        result = self.runStrip(M_matrix, e_vector, strip)
+        result = self.runStrip(M_matrix, e_vector, strip, status)
         return result

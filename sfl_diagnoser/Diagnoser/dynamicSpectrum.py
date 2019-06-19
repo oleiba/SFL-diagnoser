@@ -1,6 +1,8 @@
 import sfl_diagnoser.Diagnoser
+import math
 # from sfl_diagnoser.Diagnoser.diagnoserUtils import write_planning_file
 from sfl_diagnoser.Diagnoser.FullMatrix import FullMatrix
+from sfl_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
 
 
 class dynamicSpectrum(object):
@@ -14,7 +16,12 @@ class dynamicSpectrum(object):
         ans=FullMatrix()
         ans.probabilities=list(self.probabilities)
         ans.error=list(self.error)
+        #TODO change to prob
         ans.matrix = map(lambda test: map(lambda comp: 1 if comp in test else 0, range(len(self.probabilities))), self.TestsComponents)
+        ans.prob_matrix = map(lambda test_name: map(lambda comp: float(Experiment_Data().top_40_dict[test_name][str(comp)]) if str(comp) in Experiment_Data().top_40_dict[test_name].keys() else 0,range(len(self.probabilities))), self.tests_names)
+        tmp_matrix = map(lambda test: [(comp - min(test)) / (max(test) - min(test)) for comp in test], ans.prob_matrix)
+        ans.binary_th_matrix = map(lambda test: [round(comp) for comp in test], tmp_matrix)
+
         return ans
 
     def remove_duplicate_tests(self):
@@ -75,10 +82,10 @@ class dynamicSpectrum(object):
         return ds
 
     #return diagnoses
-    def diagnose(self):
-        fullM,chosen=FullMatrix.optimize_FullMatrix(self.convertToFullMatrix())
+    def diagnose(self,status):
+        optimaized_matrix,chosen=FullMatrix.optimize_FullMatrix(self.convertToFullMatrix(), status)
         chosenDict=dict(enumerate(chosen))
-        Opt_diagnoses=fullM.diagnose()
+        Opt_diagnoses=optimaized_matrix.diagnose(status)
         diagnoses=[]
         for diag in Opt_diagnoses:
             diag=diag.clone()

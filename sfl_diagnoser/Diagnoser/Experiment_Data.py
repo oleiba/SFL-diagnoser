@@ -12,6 +12,7 @@ class Experiment_Data(object):
         self.ESTIMATED_POOL = {}
         self.COMPONENTS_NAMES = {}
         self.clear()
+        self.top_40 = {}
 
     def clear(self):
         self.PRIORS = []
@@ -19,13 +20,14 @@ class Experiment_Data(object):
         self.POOL = {}
         self.COMPONENTS_NAMES = {}
 
-    def set_values(self, priors_arg, bugs_arg, pool_arg, components_arg, extimated_pool_arg=None):
+    def set_values(self, priors_arg, bugs_arg, pool_arg, components_arg, top_40, extimated_pool_arg=None):
         self.clear()
         self.PRIORS = priors_arg
         self.BUGS = bugs_arg
         self.POOL = pool_arg
         self.COMPONENTS_NAMES = components_arg
         self.ESTIMATED_POOL = extimated_pool_arg
+        self.top_40_dict = top_40
 
     def get_named_bugs(self):
         return map(lambda id: Experiment_Data().COMPONENTS_NAMES[id], Experiment_Data().BUGS)

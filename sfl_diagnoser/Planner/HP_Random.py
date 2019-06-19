@@ -1,3 +1,5 @@
+from scipy.constants import precision
+
 __author__ = 'amir'
 import sfl_diagnoser.Diagnoser.ExperimentInstance
 
@@ -12,14 +14,20 @@ import sfl_diagnoser.Diagnoser.ExperimentInstance
  all functions return tuple of (precision, recall, steps)
 """
 
-def main_HP(ei):
+def main_HP(ei,status):
     steps = 0
-    ei.diagnose()
-    while not (ei.isTerminal() or ei.AllTestsReached() ):
-        ei = sfl_diagnoser.Diagnoser.ExperimentInstance.addTests(ei, ei.hp_next())
+    list_recall = []
+    list_pre = []
+    ei.diagnose(status)
+    while not (len(ei.diagnoses) == 0 or ei.isTerminal(status) or ei.AllTestsReached() or  len(list_recall) > 30 ):
+        ei = sfl_diagnoser.Diagnoser.ExperimentInstance.addTests(ei, ei.hp_next(status))
         steps = steps + 1
-    precision, recall=ei.calc_precision_recall()
-    return precision, recall, steps, repr(ei)
+        precision, recall = ei.calc_precision_recall(status)
+        list_recall.append(recall)
+        list_pre.append(precision)
+        print("steps:" + str(steps))
+
+    return list_pre, list_recall
 
 
 def main_Random(ei):

@@ -1,6 +1,31 @@
 __author__ = 'amir'
-
+# from sklearn.metrics.pairwise import cosine_similarity
 import Ochiai_Rank
+import math
+import numpy as np
+
+def cosine_similarity(v1, v2):
+    "compute cosine similarity of v1 to v2: (v1 dot v2)/{||v1||*||v2||)"
+    sumxx, sumxy, sumyy = 0, 0, 0
+    for i in range(len(v1)):
+        x = v1[i];
+        y = v2[i]
+        sumxx += x * x
+        sumyy += y * y
+        sumxy += x * y
+    return sumxy / math.sqrt(sumxx * sumyy)
+
+def cross_entropy(predictions, targets, epsilon=1e-12):
+    """
+    Computes cross entropy between targets (encoded as one-hot vectors)
+    and predictions.
+    Input: predictions (N, k) ndarray
+           targets (N, k) ndarray
+    Returns: scalar
+    """
+    predictions = np.clip(predictions, epsilon, 1. - epsilon)
+    ce = - np.mean(np.log(predictions) * targets)
+    return ce
 
 class St_Strip:
     def __init__(self,M,N):
@@ -55,10 +80,15 @@ class St_Strip:
             clone[i]=self.ochiai_ranks[i].clone()
         return clone
 
-    def clone(self):
+    def clone(self,status):
         cloneStrip=St_Strip(0,0)
         cloneStrip.setup(self.comps,self.conflicts,self.last_unstripped_comps,self.last_unstripped_confs)
-        cloneStrip.ochiai_ranks=self.clone_ochiai_ranks()
+        if status!=1:
+            cloneStrip.ochiai_ranks=self.ochiai_ranks.copy()
+
+        ###--- Amir ------------------
+        else:
+            cloneStrip.ochiai_ranks=self.clone_ochiai_ranks()
         return cloneStrip
 
     def strip_comp(self,comp):
@@ -126,20 +156,72 @@ class St_Strip:
             result[i] = self.ochiai_ranks[i].get_rank()
         return result
 
-    def strip(self, M_matrix,  e_vector,  comp):
+
+
+
+    def calc_crossEntropy_ranks(self, M_matrix, e_vector):
+        result = {}
+        for i in range(len(M_matrix[0])):
+            j_comp=[float(row[i]) for row in M_matrix]
+            self.ochiai_ranks[i] = cross_entropy(j_comp, e_vector)
+        unstripped_confs = self.unstripped_confs_array_Func()
+        unstripped_comps = self.unstripped_comps_array_Func()
+        # for conf in unstripped_confs:
+        #     for comp in unstripped_comps:
+        #         self.ochiai_ranks[comp].advance_counter(M_matrix[conf][comp], e_vector[conf])
+        # for i in range(len(M_matrix[0])):
+            # result[i] = self.ochiai_ranks[i].get_rank()
+        return self.ochiai_ranks
+
+
+    def calc_cosine_ranks(self, M_matrix, e_vector):
+        result = {}
+        for i in range(len(M_matrix[0])):
+            j_comp=[row[i] for row in M_matrix]
+            self.ochiai_ranks[i] = cosine_similarity(j_comp, e_vector)
+        unstripped_confs = self.unstripped_confs_array_Func()
+        unstripped_comps = self.unstripped_comps_array_Func()
+        # for conf in unstripped_confs:
+        #     for comp in unstripped_comps:
+        #         self.ochiai_ranks[comp].advance_counter(M_matrix[conf][comp], e_vector[conf])
+        # for i in range(len(M_matrix[0])):
+            # result[i] = self.ochiai_ranks[i].get_rank()
+        return self.ochiai_ranks
+
+
+    def strip(self, M_matrix,  e_vector,  comp,status):
         unstripped_confs = self.unstripped_confs_array_Func()
         removed_confs = []
 
         self.unstripped_comps_array_Func()
         self.unstripped_confs_array_Func()
 
-        for  conf in unstripped_confs:
-            if (M_matrix[conf][comp] == 1 and e_vector[conf] == 1):
-                self.strip_conf(conf)
-                removed_confs.append(conf)
+        for conf in unstripped_confs:
+            if status!=1:
+            #### Our addition #####
+                index_max = np.argmax(M_matrix[conf])
+                diff = float(1 - M_matrix[conf][index_max])
+                for elem in range(len(M_matrix[conf])):
+                    if M_matrix[conf][elem] > 0:
+                        M_matrix[conf][elem] += diff
 
-        self.strip_comp(comp)
-		
+                to_reduce = float(M_matrix[conf][comp])
+                e_vector[conf] = e_vector[conf] - to_reduce
+                for func in range(len(M_matrix[conf])):
+                    if M_matrix[conf][func] > to_reduce:
+                        M_matrix[conf][func] = M_matrix[conf][func] - to_reduce
+
+                if e_vector[conf] <= 0:
+                    self.strip_conf(conf)
+                    removed_confs.append(conf)
+            else:
+            # ------- Amir ------
+                if (M_matrix[conf][comp] == 1 and e_vector[conf] == 1): #TODO
+                    self.strip_conf(conf)
+                    removed_confs.append(conf)
+
+        self.strip_comp(comp)  # remove the jth component
+
         # removed_confs_array = list(removed_confs)
         # self.update_ochiai_ranks(M_matrix, e_vector, removed_confs_array, comp)
 
@@ -147,8 +229,7 @@ class St_Strip:
         self.last_unstripped_confs = self.unstripped_confs_array
         self.unstripped_comps_array = []
         self.unstripped_confs_array = []
-        
-        
+
     def unstripped_comps_array_Func(self):
         list = []
         if (self.unstripped_comps_array == [] and self.last_unstripped_comps != []):

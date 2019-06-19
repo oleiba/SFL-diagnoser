@@ -5,6 +5,7 @@ from sfl_diagnoser.Diagnoser.Experiment_Data import Experiment_Data
 __author__ = 'amir'
 
 import csv
+import os
 
 def readMatrixWithProbabilitiesFile(fileName):
     reader=csv.reader(open(fileName,"r"))
@@ -32,24 +33,55 @@ def readPlanningFile(fileName):
     bugs=eval(BugsStr[0])
     initials=eval(InitialsStr[0])
     components = dict(eval(components_names[0]))
+    reverse_components_dict = {y:x for x,y in components.iteritems()}
     testsPool={}
     estimatedTestsPool = {}
     error={}
-    for td in TestDetailsStr:
-        tup = tuple(td.split(";"))
-        ind, actualTrace, err = None, None, None
-        if len(tup) == 3:
-            ind, actualTrace, err = tuple(td.split(";"))
-        if len(tup) == 4:
-            ind, actualTrace, estimatedTrace, err = tuple(td.split(";"))
-            estimatedTestsPool[ind] = eval(estimatedTrace)
-        actualTrace=eval(actualTrace)
-        err=int(err)
-        testsPool[ind] = actualTrace
-        error[ind] = err
-    Experiment_Data().set_values(priors, bugs, testsPool, components, estimatedTestsPool)
+
+
+    try:
+        for td in TestDetailsStr:
+            tup = tuple(td.split(";"))
+            ind, actualTrace, err = None, None, None
+            if len(tup) == 3:
+                ind, actualTrace, err = tuple(td.split(";"))
+            if len(tup) == 4:
+                ind, actualTrace, estimatedTrace, err = tuple(td.split(";"))
+                estimatedTestsPool[ind] = eval(estimatedTrace)
+            actualTrace=eval(actualTrace)
+            err=int(err)
+            testsPool[ind] = actualTrace
+            error[ind] = err
+    except Exception as e:
+        writeToLogError((str(e.message)), bug_num)
+        pass
+    top_40 = get_top_40_dict(fileName,reverse_components_dict)
+    Experiment_Data().set_values(priors, bugs, testsPool, components,top_40, estimatedTestsPool)
     return sfl_diagnoser.Diagnoser.ExperimentInstance.ExperimentInstance(initials, error)
 
+def get_top_40_dict(path,reverse_components):
+    new_path = path[:path.index("input")]
+    for i in os.listdir(new_path):
+        if os.path.isfile(os.path.join(new_path, i)) and 'score' in i:
+            score_file = i
+    top_40_dic = {}
+    f = open(new_path + score_file)
+    test_details = []
+    cnt = 0
+    for line in f:
+        if cnt == 40:
+            test_name = test_details[0].split(",")[0]
+            test_probs = [tuple(my_str.split(",")[1:3]) for my_str in test_details]
+            top_40_dic[test_name] = dict(test_probs)
+            test_details = []
+            cnt = 0
+
+        tmp_line = line.split(",")
+        tmp_line[1] = str(reverse_components[tmp_line[1]])
+        line = ",".join(tmp_line)
+        test_details.append(line)
+        cnt = cnt + 1
+    return top_40_dic
 
 def diagnoseTests():
     full = readMatrixWithProbabilitiesFile("C:\GitHub\matrix\OPT__Rand.csv")

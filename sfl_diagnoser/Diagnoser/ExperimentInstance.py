@@ -75,12 +75,12 @@ class ExperimentInstance:
             raise RuntimeError("self.approach is not configured")
         return optionals, probabilities
 
-    def get_components_probabilities(self):
+    def get_components_probabilities(self, status):
         """
         calculate for each component c the sum of probabilities of the diagnoses that include c
         return dict of (component, probability)
         """
-        self.diagnose()
+        self.diagnose(status)
         compsProbs={}
         for d in self.diagnoses:
             p = d.get_prob()
@@ -91,12 +91,12 @@ class ExperimentInstance:
     def get_components_probabilities_by_name(self):
         return map(lambda component: (Experiment_Data().COMPONENTS_NAMES[component[0]], component[1]), self.get_components_probabilities())
 
-    def next_tests_by_hp(self):
+    def next_tests_by_hp(self,status):
         """
         order tests by probabilities of the components
         return tests and probabilities
         """
-        compsProbs = self.get_components_probabilities()
+        compsProbs = self.get_components_probabilities(status)
         comps_probabilities = dict(compsProbs)
         optionals = self.get_optionals_actions()
         assert len(optionals) > 0
@@ -211,8 +211,8 @@ class ExperimentInstance:
         optionals, probabilities = self.next_tests_by_bd()
         return numpy.random.choice(optionals, 1, p = probabilities).tolist()[0]
 
-    def hp_next(self):
-        optionals, probabilities = self.next_tests_by_hp()
+    def hp_next(self,status):
+        optionals, probabilities = self.next_tests_by_hp(status)
         numpy.random.seed(0)
         return numpy.random.choice(optionals, 1, p = probabilities).tolist()[0]
 
@@ -222,7 +222,7 @@ class ExperimentInstance:
         return numpy.random.choice(optionals, 1, p=probabilities).tolist()[0]
 
     def hp_next_by_prob_random(self):
-        optionals, probabilities = self.next_tests_by_prob()
+        optionals, probabilities = self.next_tests_by_hp()
         numpy.random.seed(0)
         # return numpy.random.choice(optionals, 1, p=probabilities).tolist()[0]
         return random.choice(optionals)
@@ -235,13 +235,13 @@ class ExperimentInstance:
     def random_next(self):
         return random.choice(self.get_optionals_actions())
 
-    def getMaxProb(self):
-        self.diagnose()
+    def getMaxProb(self, status):
+        self.diagnose(status)
         maxP=max([x.probability for x in self.diagnoses])
         return maxP
 
-    def isTerminal(self):
-        return self.getMaxProb() > TERMINAL_PROB
+    def isTerminal(self, status):
+        return self.getMaxProb(status) > TERMINAL_PROB
 
     def AllTestsReached(self):
         return len(self.get_optionals_actions())== 0
@@ -273,9 +273,9 @@ class ExperimentInstance:
         outcome = self.simulate_next_test_outcome(action)
         return outcome,self.next_state_distribution(action)[outcome][0]
 
-    def diagnose(self):
+    def diagnose(self,status):
         if self.diagnoses == []:
-            self.diagnoses=self.initials_to_DS().diagnose()
+            self.diagnoses=self.initials_to_DS().diagnose(status)
 
     def get_named_diagnoses(self):
         self.diagnose()
@@ -306,8 +306,8 @@ class ExperimentInstance:
             recall = recall * float(pr)
         return precision, recall
 
-    def calc_precision_recall(self):
-        self.diagnose()
+    def calc_precision_recall(self,status):
+        self.diagnose(status)
         recall_accum=0
         precision_accum=0
         validComps=[x for x in range(max(reduce(list.__add__, Experiment_Data().POOL.values()))) if x not in Experiment_Data().BUGS]
