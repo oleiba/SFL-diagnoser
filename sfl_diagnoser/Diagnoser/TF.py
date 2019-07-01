@@ -44,7 +44,8 @@ class TF(object):
             # if e==0 : h1*h2*h3..., if e==1: 1-h1*h2*h3...
             return e + ((-2.0 * e + 1.0 ) * reduce(operator.mul,
                                                    map(h_dict.get, self.active_components[v]), 1.0))
-        return reduce(operator.mul, map(functools.partial(apply, test_prob), self.activity), 1.0)
+        res = reduce(operator.mul, map(functools.partial(apply, test_prob), self.activity), 1.0)
+        return res
 
     def probabilty_TF(self, h):
         return -self.probabilty(dict(zip(self.diagnosis, h)))
@@ -52,15 +53,17 @@ class TF(object):
     def not_saved(self):
         pass
 
-    def maximize(self):
+    def maximize(self, prior_probs):
         if self.max_value == None:
             self.not_saved()
             initialGuess=[0.1 for _ in self.diagnosis]
             lb = [0 for _ in self.diagnosis]
             ub = [1 for _ in self.diagnosis]
             import scipy.optimize
-            self.max_value = -scipy.optimize.minimize(self.probabilty_TF,initialGuess,method="L-BFGS-B"
-                                        ,bounds=zip(lb,ub), tol=1e-2,options={'maxiter':10}).fun
+            prior_probs_subarray = list(prior_probs[i] for i in self.diagnosis)
+            self.max_value = self.probabilty_TF(prior_probs_subarray)
+            # self.max_value = -scipy.optimize.minimize(self.probabilty_TF,initialGuess,method="L-BFGS-B"
+            #                             ,bounds=zip(lb,ub), tol=1e-2,options={'maxiter':10}).fun
             # self.max_value = -scipy.optimize.minimize(self.probabilty_TF,initialGuess,method="TNC"
             #                             ,bounds=zip(lb,ub), tol=1e-2,options={'maxiter':10}).fun
             # self.max_value = -scipy.optimize.minimize(self.probabilty_TF,initialGuess,method="SLSQP"

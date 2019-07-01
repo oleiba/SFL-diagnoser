@@ -25,7 +25,7 @@ def readMatrixWithProbabilitiesFile(fileName):
 def readPlanningFile(fileName, delimiter=";"):
     lines=open(fileName,"r").readlines()
     lines=[x.replace("\n","") for x in lines]
-    sections=["[Description]", "[Components names]", "[Priors]","[Bugs]","[InitialTests]","[TestDetails]"]
+    sections=["[Description]\r", "[Components names]\r", "[Priors]\r","[Bugs]\r","[InitialTests]\r","[TestDetails]\r"]
     sections=[lines.index(x) for x in sections]
     description, components_names, priorsStr,BugsStr,InitialsStr,TestDetailsStr=tuple([lines[x[0]+1:x[1]] for x in zip(sections,sections[1:]+[len(lines)])])
     priors=eval(priorsStr[0])
@@ -53,6 +53,78 @@ def readPlanningFile(fileName, delimiter=";"):
     Experiment_Data().set_values(priors, bugs, testsPool, components, estimatedTestsPool)
     return sfl_diagnoser.Diagnoser.ExperimentInstance.ExperimentInstance(initials, error)
 
+def writePlanningFileProbabilities(originalFileName, newFileName, new_probabilities):
+    delimiter = ";"
+    lines=open(originalFileName,"r").readlines()
+    lines=[x.replace("\n","") for x in lines]
+    sections=["[Description]\r", "[Components names]\r", "[Priors]\r","[Bugs]\r","[InitialTests]\r","[TestDetails]\r"]
+    sections=[lines.index(x) for x in sections]
+    description, components_names, priorsStr,BugsStr,InitialsStr,TestDetailsStr=tuple([lines[x[0]+1:x[1]] for x in zip(sections,sections[1:]+[len(lines)])])
+    try:
+        components = dict(map(lambda x: x if isinstance(x, tuple) else eval(x), eval(components_names[0].replace(delimiter, ','))))
+    except:
+        components = dict(eval(eval(components_names[0].replace(delimiter, ','))))
+    priors=eval(priorsStr[0])
+
+    outfile=open(newFileName, 'w+')
+    probabilities_section_index = lines.index('[Priors]\r')
+    new_probabilities_list = []
+    for i in range(len(components)):
+        if i in new_probabilities:
+            new_probabilities_list.append(new_probabilities[i])
+        else:
+            new_probabilities_list.append(0)
+
+    for i,line in enumerate(lines):
+        if i == probabilities_section_index + 1:
+            outfile.write(str(new_probabilities_list) + "\n")
+        else:
+            outfile.write(line + "\n")
+
+def write_merged_matrix_with_new_probabilities(probabilities_csv, input_matrix_file, output_matrix_file):
+    # open csv
+    rows = {}
+    field_names = ["component_name", "fault_probability"]
+    with open(probabilities_csv, 'rb') as csvfile:
+        compsreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        for row in compsreader:
+            if row != field_names:
+                start_index = row[0].find("org")
+                normalized_component_name = row[0][start_index:].replace("src\\test\\java\\", "").replace("\\", ".").replace(".java$", ":")
+                rows[normalized_component_name] = float(row[1])  # e.g. {"org.apache.someFile:someMethod": 0.038}
+
+    # read input_matrix_file
+    delimiter = ";"
+    lines=open(input_matrix_file,"r").readlines()
+    lines=[x.replace("\n","") for x in lines]
+    sections=["[Description]\r", "[Components names]\r", "[Priors]\r","[Bugs]\r","[InitialTests]\r","[TestDetails]\r"]
+    sections=[lines.index(x) for x in sections]
+    description, components_names, priorsStr,BugsStr,InitialsStr,TestDetailsStr=tuple([lines[x[0]+1:x[1]] for x in zip(sections,sections[1:]+[len(lines)])])
+    try:
+        components = dict(map(lambda x: x if isinstance(x, tuple) else eval(x), eval(components_names[0].replace(delimiter, ','))))
+    except:
+        components = dict(eval(eval(components_names[0].replace(delimiter, ','))))
+
+    # prepare orderd list of probabilities
+    new_probabilities_list = []
+    default_counter = 0
+    for c in components:
+        # find the component in the csv rows to get its probability
+        if components[c] in rows:
+            new_probabilities_list.insert(c, rows[components[c]])
+        else:
+            default_counter += 1
+            new_probabilities_list.insert(c, 0.1)  # default probability
+    print "default counter: " + str(default_counter)
+
+    # write to output_matrix_file new Priors
+    outfile=open(output_matrix_file, 'w+')
+    probabilities_section_index = lines.index('[Priors]\r')
+    for i,line in enumerate(lines):
+        if i == probabilities_section_index + 1:
+            outfile.write(str(new_probabilities_list) + "\n")
+        else:
+            outfile.write(line + "\n")
 
 def diagnoseTests():
     full = readMatrixWithProbabilitiesFile("C:\GitHub\matrix\OPT__Rand.csv")
@@ -140,31 +212,32 @@ def write_planning_file(out_path,
     if initial_tests is None:
         initial_tests = map(lambda details: details[0], tests_details)
     bugged_components = [map_component_id[component] for component in filter(lambda c: any(map(lambda b: b in c, bugs)),components_names)]
-    lines = [["[Description]"]] + [[description]]
-    lines += [["[Components names]"]] + [list(enumerate(components_names))]
-    lines += [["[Priors]"]] + [[[priors[component] for component in components_names]]]
-    lines += [["[Bugs]"]] + [[bugged_components]]
-    lines += [["[InitialTests]"]] + [[initial_tests]]
-    lines += [["[TestDetails]"]] + full_tests_details
+    lines = [["[Description]\r"]] + [[description]]
+    lines += [["[Components names]\r"]] + [list(enumerate(components_names))]
+    lines += [["[Priors]\r"]] + [[[priors[component] for component in components_names]]]
+    lines += [["[Bugs]\r"]] + [[bugged_components]]
+    lines += [["[InitialTests]\r"]] + [[initial_tests]]
+    lines += [["[TestDetails]\r"]] + full_tests_details
     with open(out_path, 'wb') as f:
         writer = csv.writer(f, delimiter=delimiter)
         writer.writerows(lines)
 
 def write_merged_matrix(instance, out_matrix):
-    componets = instance.get_components_vectors()
-    similiar_componets = {}
-    for component in componets:
-        similiar_componets.setdefault(str(sorted(componets[component])), []).append(component)
-    new_components_map = {}
-    for comp in similiar_componets:
-        candidates = similiar_componets[comp]
-        new_name = "^".join(similiar_componets[comp])
-        for candidate in candidates:
-            new_components_map[candidate] = new_name
-    get_name = lambda index: new_components_map.get(Experiment_Data().COMPONENTS_NAMES[index], Experiment_Data().COMPONENTS_NAMES[index])
-    new_bugs = map(get_name, Experiment_Data().BUGS)
-    new_pool = map(lambda test: [test, list(set(map(get_name, Experiment_Data().POOL[test]))), instance.error[test]], Experiment_Data().POOL)
-    write_planning_file(out_matrix, new_bugs, new_pool)
+    # componets = instance.get_components_vectors()
+    # similiar_componets = {}
+    # for component in componets:
+    #     similiar_componets.setdefault(str(sorted(componets[component])), []).append(component)
+    # new_components_map = {}
+    # for comp in similiar_componets:
+    #     candidates = similiar_componets[comp]
+    #     new_name = "^".join(similiar_componets[comp])
+    #     for candidate in candidates:
+    #         new_components_map[candidate] = new_name
+    # get_name = lambda index: new_components_map.get(Experiment_Data().COMPONENTS_NAMES[index], Experiment_Data().COMPONENTS_NAMES[index])
+    # new_bugs = map(get_name, Experiment_Data().BUGS)
+    # new_pool = map(lambda test: [test, list(set(map(get_name, Experiment_Data().POOL[test]))), instance.error[test]], Experiment_Data().POOL)
+    # write_planning_file(out_matrix, new_bugs, new_pool)
+    write_planning_file
 
 def save_ds_to_matrix_file(ds, out_file):
     tests_details = map(lambda details: (

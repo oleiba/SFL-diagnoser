@@ -60,6 +60,21 @@ class Diagnosis_Results(object):
     def get_metrics_names(self):
         return map(lambda m:m[0], self._get_metrics_list())
 
+    def get_new_probabilities(self):
+        total_sum = 0
+        prob_sums = dict()
+        for dg in self.diagnoses:
+            for comp in dg.diagnosis:
+                total_sum += dg.probability
+                if comp in prob_sums:
+                    prob_sums[comp] += dg.probability
+                else:
+                    prob_sums[comp] = dg.probability
+        # normalize so sum of the probabilities will be 1
+        for comp in prob_sums:
+            prob_sums[comp] = prob_sums[comp] / total_sum
+        return prob_sums
+
     def __repr__(self):
         return repr(self.metrics)
 

@@ -44,7 +44,7 @@ class Barinel:
             else:
                 dk = self.non_uniform_prior(diag)
             tf = TF.TF(self.M_matrix, self.e_vector, diag.get_diag())
-            e_dk = tf.maximize()
+            e_dk = tf.maximize(self.prior_probs)  # TODO: this is where we need to change the y_i
             diag.probability=e_dk * dk #temporary probability
             probs_sum += diag.probability
         for diag in self.diagnoses:

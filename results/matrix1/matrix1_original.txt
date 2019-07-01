@@ -1,0 +1,3 @@
+['component_entropy', 'entropy', 'num_bugs', 'num_comps', 'num_distinct_traces', 'num_failed_comps', 'num_failed_tests', 'num_tests', 'ochiai', 'only_failed_comps', 'only_passed_comps', 'precision', 'recall', 'top_k', 'wasted']
+[0.68805072612379892, 0.68805072612379881, 1, 5, 4, 3, 1, 4, {0: 1.0 2.0 0.0 Rank: 0.57735026919, 1: 0.0 2.0 1.0 Rank: 0.0, 2: 0.0 1.0 1.0 Rank: 0.0, 3: 1.0 1.0 0.0 Rank: 0.707106781187, 4: 1.0 1.0 0.0 Rank: 0.707106781187}, 0, 2, 0.05593735597275585, 0.05593735597275585, 3, 2.0]
+[[0] P: 0.0559373559728, [3] P: 0.755250115222, [4] P: 0.188812528805]
